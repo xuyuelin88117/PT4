@@ -1,0 +1,342 @@
+<!-- Programming Taskbook 4.22 | Copyright (c) M. Abramyan, 1998-2022 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>PT4Tasks</title>
+<style type="text/css">
+H1{font-family:"Arial";font-size:20pt;text-indent:0px;margin-top:10px; margin-right:10px; margin-bottom:0px; margin-left:10px;}
+H2{font-family:"Arial";font-size:16pt;text-indent:0px;margin-top:5px; margin-right:10px; margin-bottom:0px; margin-left:10px;}
+P{font-family:"Times New Roman";text-align:left;font-size:12pt;text-indent:0px;margin-top:0px; margin-right:10px; margin-bottom:0px; margin-left:10px;}
+TD{font-family:"Times New Roman";font-size:12pt;}
+LI{font-family:"Times New Roman";font-size:12pt;}
+UL{font-family:"Times New Roman";font-size:12pt;}
+SUB{font-family:"Times New Roman";font-size:8pt;}
+SUP{font-family:"Times New Roman";font-size:8pt;}
+TABLE{margin-top:0px; margin-bottom:0px;}
+P.ptAuthor{text-align:right;font-size:10pt;font-style:italic;}
+P.ptTask{text-align:justify;text-indent:-50px;margin-top:5px; margin-left:60px;}
+P.ptTaskQuote{text-align:left;margin-left:120px;margin-top:5px;margin-bottom:0px;}
+P.ptTaskCenter{text-align:center;margin-left:60px;margin-top:5px;margin-bottom:0px;}
+P.ptTaskContinue{text-align:justify;margin-left:60px;margin-top:5px; }
+P.ptComment{text-align:justify;text-indent:50px;margin-top:5px;}
+P.ptCommentCenter{text-align:center;margin-top:0px;}
+P.ptCommentQuote{text-align:left;margin-left:120px;margin-top:0px;margin-bottom:0px;}
+P.ptCommentContinue{text-align:justify;margin-top:0px;}
+P.ptFooter{text-align:right;font-size:10pt;font-style:italic;margin-right:0px;}
+SPAN.ptSpecial{font-family:"Arial";}
+PRE{font-family:"Courier New";text-align:left;font-size:10pt;text-indent:0px;margin-top:5px; margin-right:10px; margin-bottom:0px; margin-left:60px;}
+CODE{font-size:10pt;}
+TT{font-size:10pt;}
+P.ptPicture{font-family:Arial, sans-serif;margin-top: 5px;margin-bottom: 5px;margin-left: 60px;font-size: small;color: #000080;text-indent: 0pt;text-align: justify}
+</style>
+</head><body>
+<h1>Порождающие паттерны</h1>
+<p class="ptAuthor">М.&nbsp;Э.&nbsp;Абрамян, 2021</p>
+<h2>Factory Method, Abstract Factory</h2>
+<p class="ptTask"><span class="ptSpecial">OOP1Creat1°</span>. </p><p class="ptPicture"><img src="file:///C:\Program Files (x86)\PT4\LIB\Graph\OOPFactoryMethod.png" alt="C:\Program Files (x86)\PT4\LIB\Graph\OOPFactoryMethod.png" border=1></p><p class="ptTaskContinue"><b>Factory Method</b> (<b>Фабричный метод</b>)&nbsp;&#8212; порождающий паттерн. </p><p class="ptTaskContinue">Известен также под именем <b>Virtual Constructor</b> (<b>Виртуальный конструктор</b>). </p><p class="ptTaskContinue"><span class="ptSpecial">Частота использования</span>: высокая. </p><p class="ptTaskContinue"><span class="ptSpecial">Назначение</span>: определяет интерфейс для создания объекта, но оставляет подклассам решение о том, какой класс инстанцировать. Фабричный метод позволяет классу делегировать инстанцирование подклассам. </p><p class="ptTaskContinue"><span class="ptSpecial">Участники</span>: </p><p class="ptTaskContinue">&#8226;&nbsp;<i>Product</i> (<i>Продукт</i>)&nbsp;&#8212; определяет интерфейс объектов, создаваемых фабричным методом; </p><p class="ptTaskContinue">&#8226;&nbsp;<i>ConcreteProduct</i> (<i>Конкретный продукт</i>)&nbsp;&#8212; реализует интерфейс Product; </p><p class="ptTaskContinue">&#8226;&nbsp;<i>Creator</i> (<i>Создатель</i>)&nbsp;&#8212; объявляет фабричный метод, возвращающий объект типа Product; может также определять реализацию фабричного метода по умолчанию, возвращающую некоторый конкретный продукт; реализует методы, в которых используется объект Product, созданный фабричным методом; </p><p class="ptTaskContinue">&#8226;&nbsp;<i>ConcreteCreator</i> (<i>Конкретный создатель</i>)&nbsp;&#8212; замещает фабричный метод для создания конкретного продукта. </p><p class="ptTaskContinue"><span class="ptSpecial">Задание 1</span>. Реализовать две иерархии классов, в одну из которых входят абстрактный создатель Creator и два конкретных создателя ConcreteCreator1 и ConcreteCreator2, а в другую&nbsp;&#8212; абстрактный продукт Product и два конкретных продукта ConcreteProduct1 и ConcreteProduct2. </p><p class="ptTaskContinue">Абстрактный класс Product содержит два абстрактных метода, связанных с получением и преобразованием строки: метод GetInfo без параметров, возвращающий строку, и метод Transform без параметров, не возвращающий результат. Классы ConcreteProduct1 и ConcreteProduct2 содержат строковое поле info, которое инициализируется в конструкторе с помощью одноименного параметра, после чего в конструкторе класса ConcreteProduct1 поле info преобразуется к нижнему регистру, а в конструкторе класса ConcreteProduct2&nbsp;&#8212; к верхнему. Метод GetInfo в каждом подклассе возвращает текущее значение поля info, а метод Transform преобразует это поле следующим образом: для ConcreteProduct1 он добавляет дополнительный пробел после каждого непробельного символа поля info (кроме его последнего символа), а для ConcreteProduct2 он добавляет два дополнительных символа * (звездочка) после каждого символа, отличного от звездочки (кроме последнего символа). </p><p class="ptTaskContinue">Абстрактный класс Creator содержит абстрактный фабричный метод FactoryMethod(info) со строковым параметром info, возвращающий ссылку на объект Product. Этот метод определяется в классах ConcreteCreator1 и ConcreteCreator2, причем фабричный метод класса ConcreteCreator1 создает объект типа ConcreteProduct1, а фабричный метод класса ConcreteCreator2 создает объект типа ConcreteProduct2; в любом случае конструктору создаваемого объекта передается параметр info фабричного метода. </p><p class="ptTaskContinue">В абстрактном классе Creator дополнительно определить метод AnOperation(info), который создает продукт с помощью фабричного метода, передавая ему параметр info, дважды вызывает метод Transform созданного продукта и с помощью его метода GetInfo возвращает полученный результат. Использование фабричного метода в методе AnOperation приводит к тому, что выполнение метода AnOperation в подклассах класса Creator дает различные результаты, зависящие от свойств создаваемых продуктов, причем такое поведение реализуется <i>без изменения кода</i> метода AnOperation. </p><p class="ptTaskContinue">Дано пять строк. Используя конкретных создателей 1 и 2, применить к каждой из данных строк метод AnOperation и вывести возвращаемый результат этого метода (вначале выводятся результаты для первой строки, затем для второй и т.&nbsp;д.). </p><pre class="pt">public abstract class Product
+{
+    public abstract string GetInfo();
+    public abstract void Transform();
+}
+
+// Implement the ConcreteProduct1
+//   and ConcreteProduct2 descendant classes
+
+public abstract class Creator
+{
+    protected abstract Product FactoryMethod(string info);
+    public string AnOperation(string info)
+    {
+        Product p = FactoryMethod(info);
+        p.Transform();
+        p.Transform();
+        return p.GetInfo();
+    }
+}
+
+// Implement the ConcreteCreator1
+//   and ConcreteCreator2 descendant classes;
+//   the method AnOperation is not required in these classes</pre>
+<p class="ptTask"><span class="ptSpecial">OOP1Creat2°</span>. <b>Factory Method</b> (<b>Фабричный метод</b>)&nbsp;&#8212; порождающий паттерн. </p><p class="ptTaskContinue"><span class="ptSpecial">Задание 2</span>. Данное задание аналогично предыдущему (см. OOP1Creat1), однако в нем не используются абстрактные классы. Иерархию классов-<i>продуктов</i> представляет конкретный класс ConcreteProduct1 и его потомок ConcreteProduct2, иерархию классов-<i>создателей</i> представляет конкретный класс ConcreteCreator1 и его потомок ConcreteCreator2. Как и в предыдущем задании, классы-продукты обеспечивают хранение и получение строки (поле info и метод GetInfo, который возвращает значение поля info), а также ее преобразование (метод Transform). Поле Info инициализируется в конструкторе с помощью одноименного параметра, после чего конструктор класса ConcreteProduct1 преобразует поле info к нижнему регистру, а конструктор класса ConcreteProduct2&nbsp;&#8212; к верхнему. Метод Transform для конкретного продукта&nbsp;1 добавляет дополнительный символ&nbsp;* (звездочка) после каждого символа исходной строки info, отличного от звездочки (кроме последнего символа строки). Метод Transform для конкретного продукта&nbsp;2 выполняет те же действия и дополнительно добавляет по два символа&nbsp;= (знак равенства) в начало и конец строки. </p><p class="ptTaskContinue">В классах ConcreteProduct1 и ConcreteProduct2 определить фабричный метод FactoryMethod(info) со строковым параметром, возвращающий ссылку на объект ConcreteProduct1. Фабричный метод класса ConcreteCreator1 создает объект типа ConcreteProduct1, а фабричный метод класса ConcreteCreator2 создает объект типа ConcreteProduct2; в любом случае конструктору создаваемого объекта передается параметр info фабричного метода. В классе ConcreteCreator1 также определить метод AnOperation(info), который создает продукт с помощью фабричного метода, передавая ему параметр info, дважды вызывает метод Transform созданного продукта и с помощью его метода GetInfo возвращает полученный результат. </p><p class="ptTaskContinue">Дано пять строк. Используя конкретных создателей 1 и 2, применить к каждой из данных строк метод AnOperation и вывести возвращаемый результат этого метода (вначале выводятся результаты для первой строки, затем для второй и т.&nbsp;д.). </p><p class="ptTaskContinue"><span class="ptSpecial">Указание.</span> Класс-потомок ConcreteProduct2 модифицирует поведение класса-предка ConcreteProduct1. При определении конструктора класса ConcreteProduct2 используйте выражение <code>: base(info)</code> после его заголовка (для вызова конструктора предка), при модификации метода Transform класса ConcreteProduct2 используйте вызов <code>base.Transform()</code>. Класс-потомок ConcreteCreator2 модифицирует поведение класса-предка ConcreteCreator1, подменяя определенный в предке способ создания продукта.</p>
+<pre class="pt">public class ConcreteProduct1
+{
+    protected string info;
+    public string GetInfo()
+    {
+        return info;
+    }
+    public ConcreteProduct1(string info)
+    {
+        // Implement the constructor
+    }
+    public virtual void Transform()
+    {
+        // Implement the method
+    }
+}
+
+// Implement the ConcreteProduct2 descendant class
+
+public class ConcreteCreator1
+{
+    protected virtual ConcreteProduct1 FactoryMethod(string info)
+    {
+        return new ConcreteProduct1(info);
+    }
+    public string AnOperation(string info)
+    {
+        ConcreteProduct1 p = FactoryMethod(info);
+        p.Transform();
+        p.Transform();
+        return p.GetInfo();
+    }
+}
+
+// Implement the ConcreteCreator2 descendant class</pre>
+<p class="ptTask"><span class="ptSpecial">OOP1Creat3°</span>. <b>Factory Method</b> (<b>Фабричный метод</b>)&nbsp;&#8212; порождающий паттерн. </p><p class="ptTaskContinue"><span class="ptSpecial">Задание 3</span>. Реализовать иерархию классов-животных с абстрактным предком Animal, содержащим метод GetInfo, который возвращает название класса, и шестью конкретными потомками: Cobra, Python, Anaconda (змеи, snakes), Gorilla, Orangutan, Chimpanzee (человекообразные обезьяны, apes). Реализовать иерархию классов-создателей с абстрактным предком AnimalCreator и конкретными потомками SnakeCreator и ApeCreator. Фабричный метод CreateAnimal(n) этих классов принимает один целочисленный параметр n и возвращает объект типа Animal. Для конкретных классов SnakeCreator и ApeCreator параметр n метода CreateAnimal определяет номер создаваемого животного (1,&nbsp;2 или&nbsp;3) в соответствующей группе (змей или обезьян). В классе AnimalCreator дополнительно определить метод GetZoo с параметром-массивом id целых чисел (предполагается, что элементы массива id всегда имеют значения в диапазоне от 1 до 3). Метод GetZoo возвращает массив объектов Animal того же размера, что и массив id; каждый элемент результирующего массива определяется с помощью фабричного метода с параметром, равным значению соответствующего элемента массива id. </p><p class="ptTaskContinue">Дан набор из 5 чисел, каждое из которых находится в диапазоне от&nbsp;1 до&nbsp;3. Используя метод GetZoo для создателей SnakeCreator и ApeCreator, получить наборы змей и обезьян размера 5 и вывести названия животных из каждого набора. </p><pre class="pt">public abstract class Animal
+{
+    public abstract string GetInfo();
+}
+
+// Implement the Cobra, Python, Anaconda, Gorilla,
+//   Orangutan and Chimpanzee descendant classes
+
+public abstract class AnimalCreator
+{
+    protected abstract Animal CreateAnimal(int n);
+    public Animal[] GetZoo(int[] id)
+    {
+        Animal[] zoo = new Animal[id.Length];
+        for (int i = 0; i &lt; zoo.Length; i++)
+            zoo[i] = CreateAnimal(id[i]);
+        return zoo;
+    }
+}
+
+// Implement the SnakeCreator and ApeCreator descendant classes</pre>
+<p class="ptTask"><span class="ptSpecial">OOP1Creat4°</span>. </p><p class="ptPicture"><img src="file:///C:\Program Files (x86)\PT4\LIB\Graph\OOPAbstractFactory.png" alt="C:\Program Files (x86)\PT4\LIB\Graph\OOPAbstractFactory.png" border=1></p><p class="ptTaskContinue"><b>Abstract Factory</b> (<b>Абстрактная фабрика</b>)&nbsp;&#8212; порождающий паттерн. </p><p class="ptTaskContinue">Известен также под именем <b>Kit</b> (<b>Инструментарий</b>). </p><p class="ptTaskContinue"><span class="ptSpecial">Частота использования</span>: высокая. </p><p class="ptTaskContinue"><span class="ptSpecial">Назначение</span>: предоставляет интерфейс для создания семейств взаимосвязанных или взаимозависимых объектов, не специфицируя конкретные классы этих объектов. Методы абстрактной фабрики обычно реализуются как <i>фабричные методы</i> (см.&nbsp;OOP1Creat1). </p><p class="ptTaskContinue"><span class="ptSpecial">Участники</span>: </p><p class="ptTaskContinue">&#8226;&nbsp;<i>AbstractFactory</i> (<i>Абстрактная фабрика</i>)&nbsp;&#8212; объявляет интерфейс для операций, создающих абстрактные объекты-продукты; </p><p class="ptTaskContinue">&#8226;&nbsp;<i>ConcreteFactory</i> (<i>Конкретная фабрика</i>)&nbsp;&#8212; реализует операции, создающие конкретные объекты-продукты; </p><p class="ptTaskContinue">&#8226;&nbsp;<i>AbstractProduct</i> (<i>Абстрактный продукт</i>)&nbsp;&#8212; объявляет интерфейс для типа объекта-продукта; </p><p class="ptTaskContinue">&#8226;&nbsp;<i>ConcreteProduct</i> (<i>Конкретный продукт</i>)&nbsp;&#8212; определяет объект-продукт, создаваемый соответствующей конкретной фабрикой; реализует интерфейс AbstractProduct; </p><p class="ptTaskContinue">&#8226;&nbsp;<i>Client</i> (<i>Клиент</i>) &nbsp;&#8212; пользуется исключительно интерфейсами, которые объявлены в классах AbstractFactory и AbstractProduct. </p><p class="ptTaskContinue"><span class="ptSpecial">Задание 1</span>. Реализовать три иерархии классов, в одну из которых входят абстрактная фабрика AbstractFactory и две конкретные фабрики ConcreteFactory1 и ConcreteFactory2, в другую&nbsp;&#8212; абстрактный продукт (типа A) AbstractProductA и два его потомка ProductA1 и ProductA2, а в третью&nbsp;&#8212; абстрактный продукт (типа B) AbstractProductB и два его потомка ProductB1 и ProductB2. Все фабрики включают методы CreateProductA и CreateProductB, конкретные фабрики&nbsp;1 и&nbsp;2 возвращают конкретные продукты с соответствующим номером (фабрика&nbsp;1 возвращает продукты ProductA1 и ProductB1, фабрика&nbsp;2&nbsp;&#8212; продукты ProductA2 и ProductB2). </p><p class="ptTaskContinue">Все классы-продукты имеют метод GetInfo, возвращающий строковое значение. Кроме того, в продукте первого типа определен метод&nbsp;A без параметров, а в продукте второго типа&nbsp;&#8212; метод&nbsp;В с параметром типа AbstractProductA (методы не возвращают значений). Конкретные продукты содержат строковое поле info, которое инициализируется в конструкторе с помощью его параметра <i>целого типа</i> (в поле info записывается строковое представление целочисленного параметра конструктора). Метод GetInfo конкретных классов-продуктов возвращает текущее значение поля info. </p><p class="ptTaskContinue">Для класса-продукта ProductA1 метод&nbsp;A переводит поле info в целое число, удваивает его и сохраняет строковое представления результата в поле info; для класса-продукта ProductA2 метод&nbsp;A просто удваивает строку info. Для класса-продукта ProductB1 вызов objB.B(objA) преобразует поля objB.info и objA.info в целые числа, складывает их и сохраняет строковое представление результата в поле objB.info; для класса-продукта ProductB2 вызов objB.B(objA) находит сумму строк objB.info + objA.info и сохраняет результат в поле objB.info. </p><p class="ptTaskContinue">Дано целое число Nf, которое может быть равно&nbsp;1 или&nbsp;2, целые числа&nbsp;Na и&nbsp;Nb и строка&nbsp;S, содержащая только символы&nbsp;A и&nbsp;B. Описать ссылочные переменные&nbsp;f типа AbstractFactory, pa типа AbstractProductA и pb типа AbstractProductB. Если число Nf равно 1, то связать f с конкретной фабрикой&nbsp;1, если Nf равно&nbsp;2, то связать f с конкретной фабрикой&nbsp;2. Используя фабричные методы созданной фабрики, создать конкретные продукты типа&nbsp;A и&nbsp;B, инициализировав их данными числами Na и Nb соответственно, и связать их с переменными pa и pb. Затем для созданных продуктов pa и pb выполнить методы&nbsp;A и&nbsp;B в порядке, указанном в исходной строке S. При этом метод&nbsp;A должен вызываться для продукта pa, а метод&nbsp;B&nbsp;&#8212; для продукта pb, причем параметром метода&nbsp;B должен быть продукт pa. Используя методы GetInfo, вывести итоговые значения объектов-продуктов pa и pb (в указанном порядке). </p><p class="ptTaskContinue"><span class="ptSpecial">Примечание</span>. При выполнении задания используются только ссылки на абстрактные классы, а также только методы, определенные в абстрактных классах (за исключением конструктора создаваемой конкретной фабрики), что и составляет суть паттерна &#34;Абстрактная фабрика&#34;. </p><pre class="pt">public abstract class AbstractProductA
+{
+    public abstract void A();
+    public abstract string GetInfo();
+}
+
+// Implement the ProductA1 and ProductA2 descendant classes
+
+public abstract class AbstractProductB
+{
+    public abstract void B(AbstractProductA objA);
+    public abstract string GetInfo();
+}
+
+// Implement the ProductB1 and ProductB2 descendant classes
+
+public abstract class AbstractFactory
+{
+    public abstract AbstractProductA CreateProductA(int info);
+    public abstract AbstractProductB CreateProductB(int info);
+}
+
+// Implement the ConcreteFactory1
+//   and ConcreteFactory2 descendant classes</pre>
+<p class="ptTask"><span class="ptSpecial">OOP1Creat5°</span>. <b>Abstract Factory</b> (<b>Абстрактная фабрика</b>)&nbsp;&#8212; порождающий паттерн. </p><p class="ptTaskContinue"><span class="ptSpecial">Задание 2</span>. Реализовать иерархию классов, определяющих два вида элементов управления (controls): кнопки (buttons) и метки (labels). Абстрактные классы AbstractButton и AbstractLabel содержат метод GetControl, возвращающий строковое представление соответствующего элемента управления. Конкретные классы Button1, Button2, Label1, Label2 включают конструктор со строковым параметром text, который определяет текст, отображаемый на элементе управления (текст хранится в поле text). Конкретные классы отличаются видом строкового представления. Для Button1 и Label1 (первый тип представления) текст отображается заглавными буквами, кнопки обрамляются квадратными скобками (например, [CAPTION]), метки обрамляются символами = (например, =MESSAGE=). Для Button2 и Label2 (второй тип представления) текст отображается строчными (маленькими) буквами, кнопки обрамляются угловыми скобками (например, &lt;caption&gt;), метки обрамляются двойными кавычками (например, "message"). </p><p class="ptTaskContinue">Реализовать иерархию классов ControlFactory (абстрактная фабрика), Factory1 и Factory2 (конкретные фабрики). Каждый класс содержит два метода: CreateButton(text) и CreateLabel(text). Для ControlFactory эти методы являются абстрактными, для конкретных фабрик они возвращают кнопку и метку соответствующего типа (первого или второго соответственно). </p><p class="ptTaskContinue">Также реализовать класс Client, предназначенный для формирования набора элементов управления. Конструктор данного класса принимает параметр f типа ControlFactory, который в дальнейшем используется для генерации элементов управления требуемого типа. Класс Client включает метод AddButton(text) для добавления в набор новой кнопки, метод AddLabel(text) для добавления в набор новой метки и метод GetControls, возвращающий текстовое представление полученного набора элементов управления. В текстовом представлении каждый последующий элемент отделяется от предыдущего одним пробелом. </p><p class="ptTaskContinue">Дано целое число N (&#8804;&nbsp;6) и набор из N строк. Каждая строка начинается либо с символа B (признак кнопки), либо с символа L (признак метки). Затем идет пробел и текст соответствующего элемента управления. Используя два экземпляра класса Client, сформировать и вывести два варианта текстового представления указанного набора элементов управления. Вначале выводится представление первого типа, затем второго. </p><pre class="pt">public abstract class AbstractButton
+{
+    public abstract string GetControl();
+}
+
+// Implement the Button1 and Button2 descendant classes
+
+public abstract class AbstractLabel
+{
+    public abstract string GetControl();
+}
+
+// Implement the Label1 and Label2 descendant classes
+
+public abstract class ControlFactory
+{
+    public abstract AbstractButton CreateButton(string text);
+    public abstract AbstractLabel CreateLabel(string text);
+}
+
+// Implement the Factory1 and Factory2 descendant classes
+
+public class Client
+{
+    // Add required fields
+    public Client(ControlFactory f)
+    {
+        // Implement the constructor
+    }
+    public void AddButton(string text)
+    {
+        // Implement the method
+    }
+    public void AddLabel(string text)
+    {
+        // Implement the method
+    }
+    public string GetControls()
+    {
+        return &quot;&quot;;
+        // Remove the previous statement and implement the method
+    }
+}</pre>
+<h2>Singleton, Prototype, Builder</h2>
+<p class="ptTask"><span class="ptSpecial">OOP1Creat6°</span>. </p><p class="ptPicture"><img src="file:///C:\Program Files (x86)\PT4\LIB\Graph\OOPSingleton.png" alt="C:\Program Files (x86)\PT4\LIB\Graph\OOPSingleton.png" border=1></p><p class="ptTaskContinue"><b>Singleton</b> (<b>Одиночка</b>)&nbsp;&#8212; порождающий паттерн. </p><p class="ptTaskContinue"><span class="ptSpecial">Частота использования</span>: выше средней. </p><p class="ptTaskContinue"><span class="ptSpecial">Назначение</span>: гарантирует, что у класса есть только один экземпляр, и предоставляет к нему глобальную точку доступа. </p><p class="ptTaskContinue"><span class="ptSpecial">Участники</span>: </p><p class="ptTaskContinue">&#8226;&nbsp;<i>Singleton</i> (<i>Одиночка</i>)&nbsp;&#8212; определяет операцию Instance, которая позволяет клиентам получать доступ к единственному экземпляру (операция Instance обычно оформляется в виде <i>статического</i>, т.&nbsp;е. классового, метода); может обеспечивать <i>отложенную инициализацию</i> данного экземпляра. </p><p class="ptTaskContinue">Чтобы проиллюстрировать особенности паттерна Singleton, в задании предлагается реализовать не только его стандартный вариант, но и основанные на той же идее варианты, допускающие использование <i>ограниченного количества</i> экземпляров. </p><p class="ptTaskContinue"><span class="ptSpecial">Задание 1</span>. Реализовать иерархию классов, включающую абстрактный базовый класс BaseClass и классы-потомки Singleton, Doubleton и Tenton, обеспечивающие создание ограниченного количества своих экземпляров. </p><p class="ptTaskContinue">Класс BaseClass включает целочисленное поле data и два связанных с ним метода: метод IncData(increment) увеличивает значение data на величину целочисленного параметра increment, метод GetData без параметров возвращает текущее значение поля data. Поле data инициализируется нулевым значением. </p><p class="ptTaskContinue">Класс Singleton реализует стандартный паттерн &#34;Одиночка&#34;. Он включает статическое поле uniqueInstance&nbsp;&#8212; ссылку на тип Singleton (инициализируется нулевой ссылкой), закрытый конструктор без параметров, не выполняющий дополнительных действий, и статический метод Instance (без параметров, возвращает ссылку на тип Singleton). Метод Instance выполняет следующие действия: если поле uniqueInstance является нулевой ссылкой, то метод создает объект Singleton, помещает ссылку на него в поле uniqueInstance и возвращает эту ссылку как результат своей работы; если поле uniqueInstance уже содержит ссылку на объект Singleton, то метод Instance просто возвращает эту ссылку. Дополнительно реализовать статический метод InstanceCount (без параметров), который возвращает&nbsp;0, если поле uniqueInstance содержит нулевую ссылку, и&nbsp;1 в противном случае. </p><p class="ptTaskContinue">Классы Doubleton и Tenton реализуют вариант паттерна, допускающий использование <i>не более двух</i> и <i>не более десяти</i> экземпляров соответственно. </p><p class="ptTaskContinue">Класс Doubleton включает статический массив instances из двух элементов-ссылок типа Doubleton (элементы инициализируются нулевыми значениями), закрытый конструктор и статические методы Instance1 и Instance2, которые выполняют действия, аналогичные действиям метода Instance класса Singleton, но обращаются соответственно к элементам массива instances с индексами&nbsp;0 и&nbsp;1. </p><p class="ptTaskContinue">Класс Tenton отличается от класса Doubleton тем, что его статический массив instances содержит 10&nbsp;элементов-ссылок типа Tenton, а вместо двух методов Instance1 и Instance2 он включает статический метод Instance(index) с целочисленным параметром, определяющим индекс элемента массива instances, к которому обращается данный метод. Если параметр находится вне диапазона 0&#8211;9, то метод Instance может возвращать нулевую ссылку или возбуждать исключение (при выполнении задания такая ситуация не будет возникать). </p><p class="ptTaskContinue">В классах Doubleton и Tenton дополнительно реализовать статический метод InstanceCount (без параметров), который возвращает количество элементов массива instances, не являющихся нулевыми ссылками. </p><p class="ptTaskContinue">Дано целое число N (&#8804;&nbsp;10) и набор из N строк, которые могут принимать значения &#34;S&#34;, &#34;D1&#34;, &#34;D2&#34;, &#34;T0&#34;, &#34;T1&#34;, &#8230;, &#34;T9&#34;. Создать массив&nbsp;b из N&nbsp;элементов&nbsp;&#8212; ссылок на BaseClass и инициализировать его элементы экземплярами классов Singleton, Doubleton, Tenton, используя следующие варианты статических методов в зависимости от значения соответствующей строки из исходного набора: для строки &#34;S&#34; используется метод Instance класса Singleton; для строк &#34;D1&#34;, &#34;D2&#34;&nbsp;&#8212; соответственно методы Instance1 и Instance2 класса Doubleton; для строк &#34;T0&#34;, &#34;T1&#34;,&nbsp;&#8230;, &#34;T9&#34;&nbsp;&#8212; метод Instance(index) класса Tenton с параметром index, соответствующим цифре, указанной в строке. </p><p class="ptTaskContinue">После создания всех элементов массива b вывести значения метода InstanceCount для классов Singleton, Doubleton, Tenton в указанном порядке. </p><p class="ptTaskContinue">Также дано целое число K (&#8804;&nbsp;20) и набор из K пар целых чисел (index, increment), в котором первое число находится в диапазоне от&nbsp;0 до N&nbsp;&#8722;&nbsp;1 и определяет индекс элемента в массиве&nbsp;b, а второе число определяет параметр метода IncData(increment), который надо вызвать для элемента b[index]. После вызова всех требуемых методов IncData вывести итоговые значения поля data для всех объектов массива&nbsp;b, используя метод GetData. </p><p class="ptTaskContinue"><span class="ptSpecial">Указание.</span> Для языка C# задачник Programming Taskbook выполняет тестирование при <i>однократном</i> запуске программы путем <i>многократного</i> вызова ее функции Solve. Так как между вызовами функции Solve содержимое статических полей классов сохраняется, в случае данного задания это приведет к ошибочным результатам, начиная со <i>второго</i> тестового испытания. Чтобы избежать сообщения об ошибке, следует реализовать в классах Singleton, Doubleton и Tenton вспомогательный статический метод Reset, который обнуляет все статические ссылки (uniqueInstance для класса Singleton, элементы массива instances для классов Doubleton и Tenton), и вызывать методы Reset для этих классов после вывода всех результирующих данных.</p>
+<pre class="pt">public abstract class BaseClass
+{
+    int data;
+    public void IncData(int increment)
+    {
+        data += increment;
+    }
+    public int GetData()
+    {
+        return data;
+    }
+}
+
+public class Singleton : BaseClass
+{
+    static Singleton uniqueInstance;
+    Singleton() {}
+    public static void Reset()
+    {
+        uniqueInstance = null;
+    }
+    // Complete the implementation of the class
+}
+
+public class Doubleton : BaseClass
+{
+    static Doubleton[] instances = new Doubleton[2];
+    Doubleton() {}
+    public static void Reset()
+    {
+        instances[0] = instances[1] = null;
+    }
+    // Complete the implementation of the class
+}
+
+public class Tenton : BaseClass
+{
+    static Tenton[] instances = new Tenton[10];
+    Tenton() {}
+    public static void Reset()
+    {
+        for (int i = 0; i &lt; instances.Length; i++)
+            instances[i] = null;
+    }
+    // Complete the implementation of the class
+}</pre>
+<p class="ptTask"><span class="ptSpecial">OOP1Creat7°</span>. </p><p class="ptPicture"><img src="file:///C:\Program Files (x86)\PT4\LIB\Graph\OOPPrototype.png" alt="C:\Program Files (x86)\PT4\LIB\Graph\OOPPrototype.png" border=1></p><p class="ptTaskContinue"><b>Prototype</b> (<b>Прототип</b>)&nbsp;&#8212; порождающий паттерн. </p><p class="ptTaskContinue"><span class="ptSpecial">Частота использования</span>: средняя. </p><p class="ptTaskContinue"><span class="ptSpecial">Назначение</span>: задает виды создаваемых объектов с помощью экземпляра-прототипа и создает новые объекты путем копирования (&#34;клонирования&#34;) этого прототипа. </p><p class="ptTaskContinue"><span class="ptSpecial">Участники</span>: </p><p class="ptTaskContinue">&#8226;&nbsp;<i>Prototype</i> (<i>Прототип</i>)&nbsp;&#8212; объявляет интерфейс для клонирования самого себя; </p><p class="ptTaskContinue">&#8226;&nbsp;<i>ConcretePrototype</i> (<i>Конкретный прототип</i>)&nbsp;&#8212; реализует операцию клонирования себя; </p><p class="ptTaskContinue">&#8226;&nbsp;<i>Client</i> (<i>Клиент</i>)&nbsp;&#8212; создает новый объект, обращаясь к прототипу с запросом клонировать себя. </p><p class="ptTaskContinue"><span class="ptSpecial">Задание 1</span>. Реализовать иерархию классов, которая содержит абстрактный прототип Prototype и два конкретных прототипа ConcretePrototype1 и ConcretePrototype2. Все классы включают метод Clone без параметров, возвращающий копию объекта, вызвавшего данный метод, а также методы GetInfo и ChangeId. Метод GetInfo без параметров возвращает строку, метод ChangeId имеет целочисленный параметр id и не возвращает значений. В классе Prototype методы Clone, GetInfo и ChangeId являются абстрактными. Конкретные прототипы содержат строковое поле data и целочисленное поле id, которые инициализируются соответствующими параметрами конструктора. Метод GetInfo для конкретных прототипов возвращает строку, содержащую краткое имя типа (CP1 для типа ConcretePrototype1 и CP2 для типа ConcretePrototype2) и значения полей data и id (части описания разделяются символом &#34;=&#34;, например, &#34;CP1=TEXT=34&#34;). Метод ChangeId изменяет значение поля id. При реализации метода Clone можно использовать специальные средства стандартной библиотеки или обычный вызов конструктора. </p><p class="ptTaskContinue">Также реализовать класс Client, предназначенный для работы с группой объектов типа ConcretePrototype1 или ConcretePrototype2. Конструктор класса Client имеет параметр-ссылку типа Prototype, определяющий прототип объектов, включаемых в группу (прототип в группу не входит и сохраняется в специальном поле prot; для хранения группы объектов удобно использовать динамическую структуру). Класс Client также содержит методы AddObject(id) и GetObjects. Метод AddObject добавляет в набор новый объект, получаемый путем клонирования прототипа и последующего изменения поля id полученного объекта в соответствии со значением параметра метода AddObject. Метод GetObjects без параметров возвращает строку с описанием всех объектов группы (описания разделяются пробелом). Все объекты создаваемой группы имеют одно и то же поле data и различные поля id (задаваемые в методе AddObject). </p><p class="ptTaskContinue">Дана строка S, целое число N (&#8804;&nbsp;10) и набор из N целых чисел. С помощью двух объектов класса Client сформировать два набора из N объектов типа ConcretePrototype1 (для первого объекта Client) и ConcretePrototype2 (для второго объекта Client). Все созданные объекты должны иметь одинаковые поля data, равные строке S, и значения полей id, взятые из исходного набора целых чисел. Используя метод GetObjects, вывести строковые описания каждого из полученных наборов объектов. </p><p class="ptTaskContinue"><span class="ptSpecial">Примечание</span>. В реальной ситуации подход, основанный на паттерне &#34;Прототип&#34; будет эффективным, если объем действий по обычному созданию объекта превосходит объем действий по его клонированию и последующей настройке некоторых свойств. </p><pre class="pt">public abstract class Prototype
+{
+    public abstract Prototype Clone();
+    public abstract void ChangeId(int id);
+    public abstract string GetInfo();
+}
+
+// Implement the ConcretePrototype1
+//   and ConcretePrototype2 descendant classes
+
+public class Client
+{
+    // Add required fields
+    public Client(Prototype p)
+    {
+        // Implement the constructor
+    }
+    public void AddObject(int id)
+    {
+        // Implement the method
+    }
+    public string GetObjects()
+    {
+        return &quot;&quot;;
+        // Remove the previous statement and implement the method
+    }
+}</pre>
+<p class="ptTask"><span class="ptSpecial">OOP1Creat8°</span>. <b>Prototype</b> (<b>Прототип</b>)&nbsp;&#8212; порождающий паттерн. </p><p class="ptTaskContinue"><span class="ptSpecial">Задание 2</span>. Реализовать иерархию классов, связанных с графическими примитивами: AbstractGraphic (абстрактный предок), Ellip, Line и Rect (конкретные примитивы). Классы содержат метод Clone без параметров, возвращающий копию объекта, вызвавшего данный метод, а также метод ChangeLocation(x1, y1, x2, y2) с целочисленными параметрами x1, y1, x2, y2, не возвращающий значений, и метод Draw без параметров, возвращающий строку. В классе AbstractGraphic методы Clone, ChangeLocation и Draw являются абстрактными. Классы конкретных примитивов содержат целочисленные поля x1, y1, x2, y2; по умолчанию они инициализируются нулями. Метод ChangeLocation изменяет эти поля, а метод Draw возвращает строку, содержащую имя класса и текущие значения полей без пробелов (например, &#34;Line(1,3,-1,5)&#34;). При реализации метода Clone можно использовать специальные средства стандартной библиотеки или обычный вызов конструктора. </p><p class="ptTaskContinue">Также реализовать класс GraphEditor, предназначенный для работы с графическими объектами. В конструкторе класса GraphEditor передаются два ссылочных параметра p1, p2 типа AbstractGraphic, определяющих прототипы создаваемых объектов-примитивов. Для хранения прототипов используется массив из двух элементов, для хранения созданного набора графических примитивов удобно использовать динамическую структуру. Класс GraphEditor включает два метода. Метод AddGraphic(np, x1, y1, x2, y2) добавляет в набор графических примитивов объект, созданный на основе прототипа с номером np (1 или&nbsp;2) и устанавливает для него указанные координаты. Метод DrawAll без параметров возвращает строковое описание всех добавленных графических объектов, используя их метод Draw (описания объектов разделяются пробелом). </p><p class="ptTaskContinue">Дана двухсимвольная строка P, содержащая две различные буквы из набора E, L,&nbsp;R. Также дано целое число N (&#8804;&nbsp;5) и набор из N пятерок целых чисел вида (np, x1, y1, x2, y2), где np принимает значение 1 или 2, а остальные числа являются произвольными. Создать объект GraphEditor, инициализировав его двумя прототипами, которые соответствуют символам строки P (E&nbsp;&#8212; Ellip, L&nbsp;&#8212; Line, R&nbsp;&#8212; Rect); порядок прототипов определяется порядком символов в строке P. Добавить в набор графических примитивов N объектов, используя вызовы метода AddGraphic с параметрами, определяемыми пятерками данных чисел, и вывести полученный набор примитивов методом DrawAll. </p><pre class="pt">public abstract class AbstractGraphic
+{
+    public abstract AbstractGraphic Clone();
+    public abstract void ChangeLocation(int x1, int y1, int x2, int y2);
+    public abstract string Draw();
+}
+
+// Implement the Ellip, Line and Rect descendant classes
+
+public class GraphEditor
+{
+    // Add required fields
+    public GraphEditor(AbstractGraphic p1, AbstractGraphic p2)
+    {
+        // Implement the constructor
+    }
+    public void AddGraphic(int np, int x1, int y1, int x2, int y2)
+    {
+        // Implement the method
+    }
+    public string DrawAll()
+    {
+        return &quot;&quot;;
+        // Remove the previous statement and implement the method
+    }
+}</pre>
+<p class="ptTask"><span class="ptSpecial">OOP1Creat9°</span>. </p><p class="ptPicture"><img src="file:///C:\Program Files (x86)\PT4\LIB\Graph\OOPBuilder.png" alt="C:\Program Files (x86)\PT4\LIB\Graph\OOPBuilder.png" border=1></p><p class="ptTaskContinue"><b>Builder</b> (<b>Строитель</b>)&nbsp;&#8212; порождающий паттерн. </p><p class="ptTaskContinue"><span class="ptSpecial">Частота использования</span>: ниже средней. </p><p class="ptTaskContinue"><span class="ptSpecial">Назначение</span>: отделяет конструирование сложного объекта от его представления, так что в результате одного и того же процесса конструирования могут получаться разные представления. </p><p class="ptTaskContinue"><span class="ptSpecial">Участники</span>: </p><p class="ptTaskContinue">&#8226;&nbsp;<i>Builder</i> (<i>Строитель</i>)&nbsp;&#8212; задает абстрактный интерфейс для создания частей объекта Product; </p><p class="ptTaskContinue">&#8226;&nbsp;<i>ConcreteBuilder</i> (<i>Конкретный</i> <i>строитель</i>)&nbsp;&#8212; конструирует и собирает вместе части продукта посредством реализации интерфейса Builder, предоставляет интерфейс для доступа к продукту; </p><p class="ptTaskContinue">&#8226;&nbsp;<i>Director</i> (<i>Распорядитель</i>)&nbsp;&#8212; конструирует объект Product, пользуясь интерфейсом Builder; </p><p class="ptTaskContinue">&#8226;&nbsp;<i>Product</i> (<i>Продукт</i>)&nbsp;&#8212; представляет сложный конструируемый объект. </p><p class="ptTaskContinue"><span class="ptSpecial">Задание 1</span>. Реализовать иерархию классов-строителей, конструирующих продукты-строки. Иерархия включает абстрактный класс Builder, который предоставляет интерфейс для инициализации продукта (BuildStart) и создания трех его фрагментов (BuildPartA, BuildPartB, BuildPartC), и конкретные классы ConcreteBuilder1 и ConcreteBuilder2, которые определяют конкретные способы конструирования. Методы BuildStart, BuildPartA, BuildPartB, BuildPartC не имеют параметров и не возвращают значений. В абстрактном классе Builder подобные методы обычно не выполняют никаких действий, хотя и не являются абстрактными; это позволяет конкретному классу-строителю не переопределять некоторые из них, если его устраивает поведение по умолчанию. Кроме того, в классе Builder определен абстрактный метод GetResult без параметров, возвращающий строку-продукт. </p><p class="ptTaskContinue">Конкретные классы ConcreteBuilder1 и ConcreteBuilder2 содержат строковое поле product; их метод GetResult возвращает текущее значение поля product. В конструкторе этих классов поле product инициализируется пустой строкой, это же действие выполняет и метод BuildStart. Каждый из методов BuildPartA, BuildPartB, BuildPartC добавляет к строке product новый текстовый фрагмент; для класса ConcreteBuilder1 фрагменты A, B, C представляют собой строки &#34;-1-&#34;, &#34;-2-&#34; и &#34;-3-&#34;, а для класса ConcreteBuilder2&nbsp;&#8212; строки &#34;=*=&#34;, &#34;=**=&#34; и &#34;=***=&#34;. </p><p class="ptTaskContinue">Также определить класс Director, содержащий поле b&nbsp;&#8212; ссылку на объект типа Builder (поле b инициализируется в конструкторе с использованием параметра конструктора того же типа) и два метода: Construct(templat) и GetResult. Метод GetResult не имеет параметров и возвращает значение метода GetResult объекта&nbsp;b, т.&nbsp;е. построенный продукт. Метод Construct обеспечивает построение продукта; его строковый параметр templat определяет план строительства. В данном случае план определяется последовательностью символов &#34;A&#34;, &#34;B&#34;, &#34;C&#34;, каждый из которых соответствует фрагменту A, B, C, добавляемому к конструируемой строке в указанном порядке. Строка templat может содержать символы, отличные от &#34;A&#34;, &#34;B&#34;, &#34;C&#34;; подобные символы игнорируются. В начале своей работы метод Construct должен вызвать метод BuildStart. </p><p class="ptTaskContinue">Даны пять строк, каждая из которых содержит план строительства. Создать два экземпляра d1 и d2 класса Director, передав первому экземпляру объект типа ConcreteBuilder1, а второму&nbsp;&#8212; объект типа ConcreteBuilder2. Вызвать метод Construct объектов d1 и d2 для каждой из исходных строк и вывести полученные результаты, используя метод GetResult (вначале выводятся результаты для первой исходной строки, затем для второй и т.&nbsp;д.). </p><pre class="pt">public abstract class Builder
+{
+    public virtual void BuildStart() {}
+    public virtual void BuildPartA() {}
+    public virtual void BuildPartB() {}
+    public virtual void BuildPartC() {}
+    public abstract string GetResult();
+}
+
+// Implement the ConcreteBuilder1
+//   and ConcreteBuilder2 descendant classes
+
+public class Director
+{
+    Builder b;
+    public Director(Builder b)
+    {
+        this.b = b;
+    }
+    public string GetResult()
+    {
+        return b.GetResult();
+    }
+    public void Construct(string templat)
+    {
+        // Implement the method
+    }
+}</pre>
+<p class="ptTask"><span class="ptSpecial">OOP1Creat10°</span>. <b>Builder</b> (<b>Строитель</b>)&nbsp;&#8212; паттерн, порождающий объекты. </p><p class="ptTaskContinue"><span class="ptSpecial">Задание 2</span>. Реализовать систему классов, позволяющую по строковым описаниям генерировать идентификаторы, которые удовлетворяют соглашениям различных языков программирования. Каждое строковое описание представляет собой одно или более слов, разделенных одним или несколькими пробелами; начальные и конечные пробелы отсутствуют, регистр букв является произвольным. </p><p class="ptTaskContinue">Абстрактный класс Builder содержит методы для конструирования первого символа идентификатора (BuildStart), первого символа каждого последующего слова (BuildFirstChar), последующих символов слов (BuildNextChar) и символов-разделителей между словами (BuildFirstSpace). Методы BuildStart, BuildFirstChar и BuildNextChar имеют символьный параметр, используемый при конструировании (возможно, после изменения его регистра); метод BuildFirstSpace не имеет параметров. Все эти методы не возвращают значений; в классе Builder они не выполняют никаких действий. Кроме того, класс Builder содержит абстрактный метод GetResult без параметров, возвращающий строковое значение. </p><p class="ptTaskContinue">Конкретные классы BuilderPascal, BuilderPython, BuilderC содержат строковое поле product, которое инициализируется пустой строкой в конструкторе, обновляется в методе BuildStart и дополняется в методах BuildFirstChar, BuildNextChar и, возможно, в методе BuildFirstSpace. Метод GetResult возвращает значение поля product. При определении остальных методов конкретных строителей следует учитывать правила формирования идентификаторов для конкретных языков программирования: </p><p class="ptTaskContinue">&#8226;&nbsp;для языка Pascal идентификатор должен начинаться со строчной (маленькой) буквы, последующие слова&nbsp;&#8212; с заглавной буквы, все прочие буквы являются строчными, пробелы игнорируются; </p><p class="ptTaskContinue">&#8226;&nbsp;для языка Python все буквы являются строчными, а между словами добавляется символ подчеркивания; </p><p class="ptTaskContinue">&#8226;&nbsp;для языка С все буквы являются строчными, а пробелы игнорируются. </p><p class="ptTaskContinue">Из перечисленных правил следует, в частности, что для классов BuilderPascal и BuilderC не требуется переопределять метод BuildFirstSpace. </p><p class="ptTaskContinue">Также определить класс Director, содержащий ссылочное поле b типа Builder (поле b инициализируется в конструкторе с использованием параметра конструктора того же типа), и два метода: Construct(templat) и GetResult. Метод GetResult не имеет параметров и возвращает значение метода GetResult объекта b. Метод Construct обеспечивает построение продукта; его строковый параметр templat содержит строковое описание, на основании которого должен конструироваться идентификатор по правилам, реализованным в строителе b. В начале работы метод Construct должен вызвать метод BuildStart с параметром&nbsp;&#8212; первым символом строки templat. При анализе строки templat необходимо различать первый пробел в последовательности пробелов (для которого надо вызывать метод BuildFirstSpace) и последующие пробелы (которые должны игнорироваться). </p><p class="ptTaskContinue">Даны пять строк, содержащих строковые описания, которые удовлетворяют условиям, перечисленным в начале формулировки задания. Создать три объекта-распорядителя Director, связанных со строителями BuilderPascal, BuilderPython, BuilderC. Используя методы Construct и GetResult каждого из созданных распорядителей, получить по каждой из исходных строк идентификаторы на языке Pascal, Python и C и вывести их в указанном порядке (вначале выводятся идентификаторы, полученные на основе первой строки, затем на основе второй и т.&nbsp;д.). </p><pre class="pt">public abstract class Builder
+{
+    public virtual void BuildStart(char c) {}
+    public virtual void BuildFirstChar(char c) {}
+    public virtual void BuildNextChar(char c) {}
+    public virtual void BuildFirstSpace() {}
+    public abstract string GetResult();
+}
+
+// Implement the BuilderPascal, BuilderPyhton
+//   and BuilderC descendant classes
+
+public class Director
+{
+    Builder b;
+    public Director(Builder b)
+    {
+        this.b = b;
+    }
+    public string GetResult()
+    {
+        return b.GetResult();
+    }
+    public void Construct(string templat)
+    {
+        b.BuildStart(templat[0]);
+        // Complete the implementation of the method
+    }
+}</pre>
+<hr noshade>
+<p class="ptFooter">Page generation date: 2022/4/26.</p>
+</body></html>

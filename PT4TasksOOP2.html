@@ -1,0 +1,244 @@
+<!-- Programming Taskbook 4.22 | Copyright (c) M. Abramyan, 1998-2022 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>PT4Tasks</title>
+<style type="text/css">
+H1{font-family:"Arial";font-size:20pt;text-indent:0px;margin-top:10px; margin-right:10px; margin-bottom:0px; margin-left:10px;}
+H2{font-family:"Arial";font-size:16pt;text-indent:0px;margin-top:5px; margin-right:10px; margin-bottom:0px; margin-left:10px;}
+P{font-family:"Times New Roman";text-align:left;font-size:12pt;text-indent:0px;margin-top:0px; margin-right:10px; margin-bottom:0px; margin-left:10px;}
+TD{font-family:"Times New Roman";font-size:12pt;}
+LI{font-family:"Times New Roman";font-size:12pt;}
+UL{font-family:"Times New Roman";font-size:12pt;}
+SUB{font-family:"Times New Roman";font-size:8pt;}
+SUP{font-family:"Times New Roman";font-size:8pt;}
+TABLE{margin-top:0px; margin-bottom:0px;}
+P.ptAuthor{text-align:right;font-size:10pt;font-style:italic;}
+P.ptTask{text-align:justify;text-indent:-50px;margin-top:5px; margin-left:60px;}
+P.ptTaskQuote{text-align:left;margin-left:120px;margin-top:5px;margin-bottom:0px;}
+P.ptTaskCenter{text-align:center;margin-left:60px;margin-top:5px;margin-bottom:0px;}
+P.ptTaskContinue{text-align:justify;margin-left:60px;margin-top:5px; }
+P.ptComment{text-align:justify;text-indent:50px;margin-top:5px;}
+P.ptCommentCenter{text-align:center;margin-top:0px;}
+P.ptCommentQuote{text-align:left;margin-left:120px;margin-top:0px;margin-bottom:0px;}
+P.ptCommentContinue{text-align:justify;margin-top:0px;}
+P.ptFooter{text-align:right;font-size:10pt;font-style:italic;margin-right:0px;}
+SPAN.ptSpecial{font-family:"Arial";}
+PRE{font-family:"Courier New";text-align:left;font-size:10pt;text-indent:0px;margin-top:5px; margin-right:10px; margin-bottom:0px; margin-left:60px;}
+CODE{font-size:10pt;}
+TT{font-size:10pt;}
+P.ptPicture{font-family:Arial, sans-serif;margin-top: 5px;margin-bottom: 5px;margin-left: 60px;font-size: small;color: #000080;text-indent: 0pt;text-align: justify}
+</style>
+</head><body>
+<h1>Структурные паттерны</h1>
+<p class="ptAuthor">М.&nbsp;Э.&nbsp;Абрамян, 2021</p>
+<h2>Adapter, Composite, Decorator</h2>
+<p class="ptTask"><span class="ptSpecial">OOP2Struc1°</span>. </p><p class="ptPicture"><img src="file:///C:\Program Files (x86)\PT4\LIB\Graph\OOPAdapterO.png" alt="C:\Program Files (x86)\PT4\LIB\Graph\OOPAdapterO.png" border=1></p><p class="ptTaskContinue"><b>Adapter</b> (<b>Адаптер</b>)&nbsp;&#8212; структурный паттерн. </p><p class="ptTaskContinue">Известен также под именем <b>Wrapper</b> (<b>Обертка</b>). </p><p class="ptTaskContinue"><span class="ptSpecial">Частота использования</span>: выше средней. </p><p class="ptTaskContinue"><span class="ptSpecial">Назначение</span>: преобразует интерфейс одного класса в интерфейс другого, который ожидают клиенты. Адаптер обеспечивает совместную работу классов с несовместимыми интерфейсами, которая без него была бы невозможна. </p><p class="ptTaskContinue"><span class="ptSpecial">Участники</span>: </p><p class="ptTaskContinue">&#8226;&nbsp;<i>Target</i> (<i>Целевой класс</i>)&nbsp;&#8212; определяет зависящий от предметной области интерфейс, которым пользуется Client; </p><p class="ptTaskContinue">&#8226;&nbsp;<i>Client</i> (<i>Клиент</i>)&nbsp;&#8212; вступает во взаимоотношения с объектами, удовлетворяющими интерфейсу Target; </p><p class="ptTaskContinue">&#8226;&nbsp;<i>Adaptee</i> (<i>Адаптируемый класс</i>)&nbsp;&#8212; определяет существующий интерфейс, который нуждается в адаптации; </p><p class="ptTaskContinue">&#8226;&nbsp;<i>Adapter</i> (<i>Адаптер</i>)&nbsp;&#8212; адаптирует интерфейс Adaptee к интерфейсу Target. </p><p class="ptTaskContinue">В данном задании рассматривается вариант адаптера, использующий композицию. Такой вариант называется <i>адаптером объекта</i>, поскольку адаптируется <i>объект</i> типа Adaptee, входящий в виде ссылочного поля в класс Adapter. </p><p class="ptTaskContinue"><span class="ptSpecial">Задание 1</span>. Абстрактный класс Target содержит три абстрактных метода: GetA, GetB и Request (не имеют параметров, возвращают значение целого типа). Класс ConcreteTarget является потомком класса Target; он содержит поля a и b целого типа, которые инициализируются в конструкторе, имеющем одноименные параметры. Методы GetA и GetB класса ConcreteTarget возвращают значения полей a и b соответственно, а метод Request возвращает сумму этих полей. </p><p class="ptTaskContinue">Класс Adaptee содержит два целочисленных поля a и b, конструктор с параметрами a и b, задающий значения этих полей, метод GetAll, возвращающий текущие значения полей (либо с помощью выходных параметров, либо с помощью структурного возвращаемого значения&nbsp;&#8212; массива или кортежа), и метод SpecificRequest без параметров, возвращающий произведение полей a и b. </p><p class="ptTaskContinue">Реализовать класс Adapter, адаптирующий класс Adaptee к интерфейсу класса Target. Класс должен быть адаптером объекта: он порождается от класса Target и включает ссылку ad на экземпляр адаптируемого объекта Adaptee. Ссылка ad инициализируется в конструкторе класса Adapter с помощью одноименного параметра (других параметров конструктор не имеет). Метод Request класса Adapter должен вызывать метод SpecificRequest объекта ad, а методы GetA и GetB&nbsp;&#8212; возвращать значения полей a и b объекта ad, используя его метод GetAll. </p><p class="ptTaskContinue">Дано целое число N (&#8804;&nbsp;6) и набор из N троек (C, A, B), где C является символом &#34;+&#34; или &#34;*&#34;, а элементы A и B являются целыми числами. Создать структуру данных (например, массив) с элементами-ссылками типа Target и заполнить ее объектами типа ConcreteTarget (для троек с символом &#34;+&#34;) и Adapter (для троек с символом &#34;*&#34;) с полями, равными A и B. Перебирая элементы полученного набора в обратном порядке, вывести для каждого из них значения полей a, b и результат выполнения метода Request. </p><pre class="pt">public class Adaptee
+{
+    // Do not change the implementation of the class
+    int a, b;
+    public Adaptee(int a, int b)
+    {
+        this.a = a;
+        this.b = b;
+    }
+    public void GetAll(out int a, out int b)
+    {
+        a = this.a;
+        b = this.b;
+    }
+    public int SpecificRequest()
+    {
+        return a * b;
+    }
+}
+
+public abstract class Target
+{
+    public abstract int GetA();
+    public abstract int GetB();
+    public abstract int Request();
+}
+
+// Implement the ConcreteTarget and Adapter classes</pre>
+<p class="ptTask"><span class="ptSpecial">OOP2Struc2°</span>. </p><p class="ptPicture"><img src="file:///C:\Program Files (x86)\PT4\LIB\Graph\OOPAdapterC.png" alt="C:\Program Files (x86)\PT4\LIB\Graph\OOPAdapterC.png" border=1></p><p class="ptTaskContinue"><b>Adapter</b> (<b>Адаптер</b>)&nbsp;&#8212; структурный паттерн. </p><p class="ptTaskContinue">В данном задании рассматривается вариант адаптера, использующий множественное наследование. Такой вариант называется <i>адаптером класса</i>, поскольку класс Adapter порождается от <i>класса</i> Adaptee, наследуя его реализацию (а также от класса Target, наследуя его интерфейс). Если язык не поддерживает множественное наследование, то адаптер класса можно реализовать с помощью <i>интерфейсов</i>; для этого надо преобразовать абстрактный класс Target в интерфейс ITarget, сделать класс Adapter потомком класса Adaptee и добавить к нему интерфейс ITarget. </p><p class="ptTaskContinue"><span class="ptSpecial">Задание 2</span>. Выполнить предыдущее задание (см.&nbsp;OOP2Struc1), реализовав Adapter как адаптер класса. Для языков, не поддерживающих множественное наследование, определить интерфейс ITarget с методами GetA, GetB и Request и добавить интерфейс ITarget к классам ConcreteTarget и Adapter (абстрактный класс Target при этом не требуется; для хранения исходных данных надо использовать структуру с элементами интерфейсного типа ITarget). </p><pre class="pt">public class Adaptee
+{
+    // Do not change the implementation of the class
+    int a, b;
+    public Adaptee(int a, int b)
+    {
+        this.a = a;
+        this.b = b;
+    }
+    public void GetAll(out int a, out int b)
+    {
+        a = this.a;
+        b = this.b;
+    }
+    public int SpecificRequest()
+    {
+        return a * b;
+    }
+}
+
+public abstract class Target
+{
+    // Convert this abstract class into the ITarget interface
+    public abstract int GetA();
+    public abstract int GetB();
+    public abstract int Request();
+}
+
+// Implement the ConcreteTarget and Adapter classes</pre>
+<p class="ptTask"><span class="ptSpecial">OOP2Struc3°</span>. <b>Adapter</b> (<b>Адаптер</b>)&nbsp;&#8212; структурный паттерн. </p><p class="ptTaskContinue"><span class="ptSpecial">Задание 3</span>. Дан абстрактный класс Shape, предоставляющий интерфейс для графических объектов: метод GetInfo без параметров, возвращающий строку с именем объекта и координатами левой верхней и правой нижней вершины ограничивающего прямоугольника (считается, что ось <i>OY</i> направлена вниз), и метод MoveBy(a, b) с двумя целочисленными параметрами, определяющими вектор, на который надо сместить данный графический объект (метод не возвращает значений). В классе Shape методы GetInfo и MoveBy являются абстрактными. </p><p class="ptTaskContinue">Также дан конкретный класс RectShape&nbsp;&#8212; потомок класса Shape, реализующий прямоугольник и имеющий конструктор с параметрами (x1, y1, x2, y2), задающими координаты левой верхней и правой нижней вершины этого прямоугольника. Метод GetInfo для данного класса возвращает строку вида &#34;R(x1,y1)(x2,y2)&#34; с текущими значениями координат. </p><p class="ptTaskContinue">Дан класс TextView для работы с текстовыми объектами. Он содержит поля x, y (координаты точки привязки&nbsp;&#8212; левого верхнего угла текстовой области), width, height (ширина и высота текстовой области) и методы GetOrigin (возвращает координаты точки привязки), SetOrigin (изменяет точку привязки), GetSize (возвращает размеры текстовой области) и SetSize (изменяет размеры текстовой области). Методы GetOrigin и GetSize возвращают результаты либо с помощью выходных параметров, либо с помощью структурного возвращаемого значения&nbsp;&#8212; массива или кортежа. Конструктор класса не имеет параметров (поля x и y полагаются равными&nbsp;0, поля width и height&nbsp;&#8212; равными&nbsp;1). </p><p class="ptTaskContinue">Реализовать класс TextShape, адаптирующий класс TextView к интерфейсу класса Shape. Класс должен быть адаптером объекта: он порождается от класса Shape и включает поле tview, являющееся ссылкой на экземпляр адаптируемого объекта TextView (других полей класс TextShape не содержит). Метод GetInfo класса TextShape должен возвращать строку вида &#34;T(x1,y1)(x2,y2)&#34; с текущими значениями левой верхней и правой нижней вершины ограничивающего прямоугольника. Включить в класс TextShape конструктор с параметрами (tview, x1, y1, x2, y2); смысл четырех последних параметров аналогичен смыслу параметров конструктора класса RectShape. </p><p class="ptTaskContinue">Дано целое число N (&#8804;&nbsp;8) и набор из N пятерок (C, X1, Y1, X2, Y2), где C является символом &#34;R&#34; или &#34;T&#34;, а остальные элементы являются целыми числами. Кроме того, даны целые числа A и B. Создать структуру данных (например, массив) с элементами типа Shape и заполнить ее объектами типа RectShape (для пятерок с символом &#34;R&#34;) и TextShape (для пятерок с символом &#34;T&#34;), используя значения X1, Y1, X2, Y2 в качестве параметров соответствующего конструктора. Применить к каждому элементу созданного набора метод MoveBy с параметрами A и B и вывести строковые представления элементов набора с помощью метода GetInfo (перебирая элементы в исходном порядке). </p><pre class="pt">public class TextView
+{
+    // Do not change the implementation of the class
+    int x, y;
+    int width = 1, height = 1;
+    public void GetOrigin(out int x, out int y)
+    {
+        x = this.x;
+        y = this.y;
+    }
+    public void SetOrigin(int x, int y)
+    {
+        this.x = x;
+        this.y = y;
+    }
+    public void GetSize(out int width, out int height)
+    {
+        width = this.width;
+        height = this.height;
+    }
+    public void SetSize(int width, int height)
+    {
+        this.width = width;
+        this.height = height;
+    }
+}
+
+public abstract class Shape
+{
+    public abstract string GetInfo();
+    public abstract void MoveBy(int a, int b);
+}
+
+// Implement the RectShape and TextShape descendant classes</pre>
+<p class="ptTask"><span class="ptSpecial">OOP2Struc4°</span>. <b>Adapter</b> (<b>Адаптер</b>)&nbsp;&#8212; структурный паттерн. </p><p class="ptTaskContinue"><span class="ptSpecial">Задание 4</span>. Выполнить предыдущее задание (см.&nbsp;OOP2Struc3), реализовав TextShape как адаптер класса. Для языков, не поддерживающих множественное наследование, преобразовать абстрактный класс Shape в интерфейс IShape и добавить его к классам RectShape и TextShape (для хранения исходных данных в этом случае надо использовать структуру с элементами интерфейсного типа IShape). </p><pre class="pt">public class TextView
+{
+    // Do not change the implementation of the class
+    int x, y;
+    int width = 1, height = 1;
+    public void GetOrigin(out int x, out int y)
+    {
+        x = this.x;
+        y = this.y;
+    }
+    public void SetOrigin(int x, int y)
+    {
+        this.x = x;
+        this.y = y;
+    }
+    public void GetSize(out int width, out int height)
+    {
+        width = this.width;
+        height = this.height;
+    }
+    public void SetSize(int width, int height)
+    {
+        this.width = width;
+        this.height = height;
+    }
+}
+
+public abstract class Shape
+{
+    // Convert this abstract class into the IShape interface
+    public abstract string GetInfo();
+    public abstract void MoveBy(int a, int b);
+}
+
+// Implement the RectShape and TextShape classes
+// These classes must implement the IShape interface;
+//   the TextShape class must be a descendant of the TextView class</pre>
+<p class="ptTask"><span class="ptSpecial">OOP2Struc5°</span>. </p><p class="ptPicture"><img src="file:///C:\Program Files (x86)\PT4\LIB\Graph\OOPComposite.png" alt="C:\Program Files (x86)\PT4\LIB\Graph\OOPComposite.png" border=1></p><p class="ptTaskContinue"><b>Composite</b> (<b>Компоновщик</b>)&nbsp;&#8212; структурный паттерн. </p><p class="ptTaskContinue"><span class="ptSpecial">Частота использования</span>: выше средней. </p><p class="ptTaskContinue"><span class="ptSpecial">Назначение</span>: компонует объекты в древовидные структуры для представления иерархий &#34;часть-целое&#34;. Позволяет клиентам единообразно трактовать индивидуальные и составные объекты. </p><p class="ptTaskContinue"><span class="ptSpecial">Участники</span>: </p><p class="ptTaskContinue">&#8226;&nbsp;<i>Component</i> (<i>Компонент</i>)&nbsp;&#8212; объявляет интерфейс для компонуемых объектов; предоставляет подходящую реализацию операций по умолчанию, общую для всех классов; объявляет интерфейс для доступа к дочерним компонентам и управления ими; </p><p class="ptTaskContinue">&#8226;&nbsp;<i>Leaf</i> (<i>Лист</i>)&nbsp;&#8212; представляет листовой узел композиции, не имеющий потомков; </p><p class="ptTaskContinue">&#8226;&nbsp;<i>Composite</i> (<i>Составной объект</i>)&nbsp;&#8212; хранит дочерние компоненты составного узла; реализует относящиеся к управлению потомками операции в интерфейсе класса Component; </p><p class="ptTaskContinue">&#8226;&nbsp;<i>Client</i> (<i>Клиент</i>)&nbsp;&#8212; манипулирует объектами композиции через интерфейс Component. </p><p class="ptTaskContinue">Объекты-листы и составные объекты могут также содержать дополнительные методы, определяющие их особое поведение, однако паттерн Composite ориентирован прежде всего на применение тех методов, которые являются общими у всех объектов композиции (хотя и реализуются по-разному для листов и составных объектов). </p><p class="ptTaskContinue"><span class="ptSpecial">Задание 1</span>. Реализовать иерархию классов, включающую абстрактный класс Component с методами Add и Show и конкретные классы Leaf и Composite. Метод Add с параметром-ссылкой c типа Component добавляет компонент c в набор дочерних компонентов (имеет смысл только для класса Composite; для класса Leaf не выполняет никаких действий), метод Show возвращает строковое представление данного компонента и всех его потомков (при наличии). В классе Component метод Add не выполняет никаких действий, а метод Show является абстрактным. </p><p class="ptTaskContinue">Классы Composite и Leaf содержат символьное поле data; метод Show класса Leaf возвращает это поле (преобразованное к строковому типу), метод Show класса Composite возвращает строку, начинающуюся с символа data, после которого стоит открывающая круглая скобка &#34;(&#34;, затем указываются данные, полученные методом Show для каждого дочернего компонента (без пробелов), а затем указывается закрывающая круглая скобка &#34;)&#34;. Класс Composite хранит свои дочерние компоненты в виде массива или другой структуры с элементами-ссылками типа Component (можно считать, что любой объект типа Composite содержит не более 15 дочерних компонентов). Конструктор классов Leaf и Composite содержит один параметр&nbsp;&#8212; символ data. </p><p class="ptTaskContinue">Дана строка, содержащая не более 15 прописных и строчных латинских букв и набор согласованных круглых скобок, причем скобка &#34;(&#34; располагается после каждой прописной буквы (а в других позициях строки располагаться не может). Эта строка определяет набор данных для объектов типа Component; круглые скобки задают композицию этих объектов. Например, строка &#34;aB(C(de)f)G()h&#34; задает листья a, d, e, f, h и составные объекты B, C, G; при этом объект B содержит дочерние объекты C и f, объект C содержит дочерние объекты d и e, а объект G не содержит дочерних объектов (хотя и является составным). Создать все компоненты, определяемые данной строкой, и вывести для каждого из них описание, используя метод Show и перебирая компоненты в порядке их появления в исходной строке. </p><p class="ptTaskContinue"><span class="ptSpecial">Указание.</span> Для создания требуемых объектов можно использовать рекурсивную функцию Process(s, ind, parent), где s&nbsp;&#8212; исходная строка, ind&nbsp;&#8212; индекс анализируемого символа в строке, parent (типа Composite)&nbsp;&#8212; текущий родительский компонент (может быть пустым). Функция строит деревья компонентов и одновременно добавляет каждый создаваемый компонент в результирующую структуру, которая будет использована для вывода его описания.</p>
+<pre class="pt">public abstract class Component
+{
+    public virtual void Add(Component c) {}
+    public abstract string Show();
+}
+
+// Implement the Left and Composite descendant classes</pre>
+<p class="ptTask"><span class="ptSpecial">OOP2Struc6°</span>. <b>Composite</b> (<b>Компоновщик</b>)&nbsp;&#8212; структурный паттерн. </p><p class="ptTaskContinue"><span class="ptSpecial">Задание 2</span>. Реализовать иерархию классов, включающую абстрактный класс Device (устройство) с методами Add, GetName и GetTotalPrice и конкретные классы SimpleDevice (простое устройство) и CompoundDevice (составное устройство). Метод Add с параметром-ссылкой d типа Device добавляет устройство d в набор дочерних устройств (имеет смысл только для класса CompoundDevice; для класса SimpleDevice не выполняет никаких действий), метод GetName возвращает строковое имя данного устройства, метод GetTotalPrice возвращает стоимость данного устройства и всех его потомков (целое число). В классе Device метод Add не выполняет никаких действий, а методы GetName и GetTotalPrice являются абстрактными. </p><p class="ptTaskContinue">Классы SimpleDevice и CompoundDevice содержат строковое поле name и целочисленное поле price; класс CompoundDevice хранит свои дочерние устройства в виде массива или другой структуры с элементами-ссылками типа Device (можно считать, что любой объект типа CompoundDevice содержит не более 15 дочерних устройств). Конструктор классов SimpleDevice и CompoundDevice содержит два параметра: строку name и целое число price. </p><p class="ptTaskContinue">Дано целое число N (&#8804;&nbsp;15) и N пар вида (name, price), где name&nbsp;&#8212; некоторая строка, а price&nbsp;&#8212; положительное целое число. Первый символ строки name является латинской буквой; если буква заглавная, то строка определяет составное устройство, а если строчная&nbsp;&#8212; то простое устройство. Кроме того, дан набор из N целых чисел, определяющих связи между исходными устройствами: число с индексом K (K&nbsp;=&nbsp;0,&nbsp;&#8230;, N&nbsp;&#8722;&nbsp;1) определяет индекс родительского устройства для исходного устройства с индексом K (при этом гарантируется, что родительское устройство обязательно имеет тип CompoundDevice). Если устройство не имеет родителя, то соответствующий элемент в исходном наборе чисел равен&nbsp;&#8722;1. Перебирая созданные устройства в порядке, соответствующем порядку их характеристик (name, price) и используя методы GetName и GetTotalPrice, вывести для каждого устройства название и полную стоимость. </p><pre class="pt">public abstract class Device
+{
+    public virtual void Add(Device d) {}
+    public abstract string GetName();
+    public abstract int GetTotalPrice();
+}
+
+// Implement the SimpleDevice
+//   and CompoundDevice descendant classes</pre>
+<p class="ptTask"><span class="ptSpecial">OOP2Struc7°</span>. </p><p class="ptPicture"><img src="file:///C:\Program Files (x86)\PT4\LIB\Graph\OOPDecorator.png" alt="C:\Program Files (x86)\PT4\LIB\Graph\OOPDecorator.png" border=1></p><p class="ptTaskContinue"><b>Decorator</b> (<b>Декоратор</b>)&nbsp;&#8212; структурный паттерн. </p><p class="ptTaskContinue">Известен также под именем <b>Wrapper</b> (<b>Обертка</b>). </p><p class="ptTaskContinue"><span class="ptSpecial">Частота использования</span>: средняя. </p><p class="ptTaskContinue"><span class="ptSpecial">Назначение</span>: динамически добавляет объекту новые возможности, приводящие к изменению его состояния и/или поведения. Является гибкой альтернативой порождению подклассов с целью расширения функциональности. </p><p class="ptTaskContinue"><span class="ptSpecial">Участники</span>: </p><p class="ptTaskContinue">&#8226;&nbsp;<i>Component</i> (<i>Компонент</i>)&nbsp;&#8212; определяет интерфейс для объектов, к которым могут быть динамически добавлены новые возможности; </p><p class="ptTaskContinue">&#8226;&nbsp;<i>ConcreteComponent</i> (<i>Конкретный компонент</i>)&nbsp;&#8212; определяет объект, к которому могут быть добавлены новые возможности; </p><p class="ptTaskContinue">&#8226;&nbsp;<i>Decorator</i> (<i>Декоратор</i>)&nbsp;&#8212; хранит ссылку на объект Component и определяет интерфейс, соответствующий интерфейсу Component; </p><p class="ptTaskContinue">&#8226;&nbsp;<i>ConcreteDecoratorA</i> и <i>ConcreteDecoratorB</i> (<i>Конкретные декораторы</i>)&nbsp;&#8212; добавляют к компоненту новые возможности, изменяющие его состояние и/или поведение. </p><p class="ptTaskContinue"><span class="ptSpecial">Задание 1</span>. Реализовать иерархию классов, которая включает абстрактный класс Component с абстрактным методом Show (не имеет параметров, возвращает строку), абстрактный класс Decorator, который является потомком класса Component и содержит защищенное поле comp&nbsp;&#8212; ссылку на объект типа Component, и конкретные классы ConcreteComponent (потомок класса Component), ConcreteDecoratorA и ConcreteDecoratorB (потомки класса Decorator). </p><p class="ptTaskContinue">Класс ConcreteComponent содержит строковое поле text, которое инициализируется в конструкторе с помощью одноименного параметра. Метод Show класса ConcreteComponent возвращает строку text. Классы ConcreteDecoratorA и ConcreteDecoratorB имеют конструктор с параметром comp, являющимся ссылкой на объект типа Component; этот параметр присваивается полю comp. Метод Show конкретного декоратора A возвращает строку, полученную путем добавления строки &#34;==&#34; перед и после текста, возвращенного методом Show объекта comp. Метод Show конкретного декоратора B возвращает строку, полученную путем добавления символа &#34;(&#34; перед текстом, возвращенным методом Show объекта comp, и символа &#34;)&#34; после этого текста. Таким образом, каждый декоратор изменяет поведение метода Show исходного объекта Component, добавляя к возвращаемому значению дополнительный префикс и суффикс. </p><p class="ptTaskContinue">Дано целое число N (&#8804;&nbsp;9) и N пар строк (S,&nbsp;D), причем строка S является непустой, а строка D содержит только буквы &#34;A&#34; и &#34;B&#34; и может быть пустой. Создать набор из N объектов типа Component, формируя каждый элемент этого набора на основе соответствующей пары строк (S,&nbsp;D) следующим образом: вначале создать объект типа ConcreteComponent, вызвав его конструктор с параметром S, а затем последовательно применять к результирующему объекту декораторы A или В, причем количество и порядок декораторов определяется строкой D (например, в случае строки &#34;AAB&#34; к исходному объекту типа ConcreteComponent надо последовательно применить декораторы A, A и B). Перебирая созданный набор из N объектов <i>в обратном порядке</i>, вызвать для каждого из них метод Show и вывести его возвращаемое значение. </p><pre class="pt">public abstract class Component
+{
+    public abstract string Show();
+}
+
+// Implement the ConcreteComponent descendant class
+
+public abstract class Decorator : Component
+{
+    protected Component comp;
+}
+
+// Implement the ConcreteDecoratorA
+//   and ConcreteDecoratorB descendant classes</pre>
+<p class="ptTask"><span class="ptSpecial">OOP2Struc8°</span>. <b>Decorator</b> (<b>Декоратор</b>)&nbsp;&#8212; структурный паттерн. </p><p class="ptTaskContinue"><span class="ptSpecial">Задание 2</span>. Реализовать иерархию классов, включающую абстрактный класс Function с абстрактными методами GetName (без параметров; возвращает строку) и GetValue(x) (с целочисленным параметром; возвращает целое число) и пять конкретных классов&nbsp;&#8212; потомков Function: FX, FDouble, FTriple, FSquare, FCube. </p><p class="ptTaskContinue">Класс FX не имеет полей; его метод GetName возвращает строку &#34;X&#34;, а функция GetValue(x) возвращает свой параметр x. Остальные конкретные классы являются декораторами; все они содержат ссылочное поле f типа Function и конструктор с параметром-ссылкой f типа Function, который инициализирует это поле. Метод GetName данных классов вызывает метод GetName класса f и возвращает его результат, снабженный дополнительным префиксом и суффиксом: &#34;2*(&#34; и &#34;)&#34; для FDouble, &#34;3*(&#34; и &#34;)&#34; для FTriple, &#34;(&#34; и &#34;)^2&#34; для FSquare, &#34;(&#34; и &#34;)^3&#34; для FCube. Метод GetValue(x) данных классов вызывает метод GetValue(x) класса f и возвращает его результат, преобразованный следующим образом: результат умножается на 2 для FDouble, умножается на 3 для FTriple, возводится к квадрат для FSquare, возводится в куб для FCube. </p><p class="ptTaskContinue">Дано целое число N (&#8804;&nbsp;10) и набор из N строк; каждая строка содержит комбинацию из букв &#34;D&#34;, &#34;T&#34;, &#34;S&#34; и &#34;C&#34; и может быть пустой. Кроме того, даны два целых числа X1 и X2. Создать набор из N объектов типа Function, формируя каждый элемент следующим образом: вначале создать объект типа FX, а затем последовательно применять к результирующему объекту декораторы FDouble, FTriple, FSquare, FCube, причем количество и порядок декораторов определяется символами соответствующей строки из исходного набора (например, в случае строки &#34;TCSS&#34; к исходному объекту типа FX надо последовательно применить декораторы FTriple, FCube и два декоратора FSquare). Перебирая созданный набор из N объектов в исходном порядке, вызвать для каждого из них методы GetName, GetValue(X1) и GetValue(X2) и вывести их возвращаемые значения. </p><pre class="pt">public abstract class Function
+{
+    public abstract string GetName();
+    public abstract int GetValue(int x);
+}
+
+// Implement the FX, FDouble, FTriple, FSquare
+//   and FCube descendant classes</pre>
+<h2>Proxy, Bridge, Flyweight</h2>
+<p class="ptTask"><span class="ptSpecial">OOP2Struc9°</span>. </p><p class="ptPicture"><img src="file:///C:\Program Files (x86)\PT4\LIB\Graph\OOPProxy.png" alt="C:\Program Files (x86)\PT4\LIB\Graph\OOPProxy.png" border=1></p><p class="ptTaskContinue"><b>Proxy</b> (<b>Заместитель</b>)&nbsp;&#8212; структурный паттерн. </p><p class="ptTaskContinue">Известен также под именем <b>Surrogate</b> (<b>Суррогат</b>). </p><p class="ptTaskContinue"><span class="ptSpecial">Частота использования</span>: выше средней. </p><p class="ptTaskContinue"><span class="ptSpecial">Назначение</span>: является суррогатом другого объекта и контролирует доступ к нему. </p><p class="ptTaskContinue"><span class="ptSpecial">Участники</span>: </p><p class="ptTaskContinue">&#8226;&nbsp;<i>Subject</i> (<i>Субъект</i>)&nbsp;&#8212; определяет общий для RealSubject и Proxy интерфейс, так что класс Proxy можно использовать везде, где ожидается RealSubject; </p><p class="ptTaskContinue">&#8226;&nbsp;<i>RealSubject</i> (<i>Реальный субъект</i>)&nbsp;&#8212; определяет реальный объект, представленный заместителем; </p><p class="ptTaskContinue">&#8226;&nbsp;<i>Proxy</i> (<i>Заместитель</i>)&nbsp;&#8212; хранит ссылку, которая позволяет заместителю обратиться к реальному субъекту; контролирует доступ к реальному субъекту и может отвечать за его создание и удаление; прочие обязанности зависят от вида заместителя (<i>удаленный заместитель</i> отвечает за отправление запроса реальному субъекту в другом адресном пространстве; <i>виртуальный заместитель</i> может отложить создание реального субъекта и вызывать некоторые его методы самостоятельно; <i>защищающий заместитель</i> проверяет, имеет ли вызывающий объект необходимые для выполнения запроса права). </p><p class="ptTaskContinue"><span class="ptSpecial">Задание 1</span>. Реализовать иерархию классов, включающую абстрактный класс Subject с абстрактными методами OperationA, OperationB, OperationC, OperationD и конкретные классы RealSubject и Proxy&nbsp;&#8212; потомки класса Subject. Указанные методы не имеют параметров и возвращают строку. Класс RealSubject не имеет полей, его методы возвращают следующие строки: &#34;A (Real)&#34;, &#34;B (Real)&#34;, &#34;C (Real)&#34;, &#34;D (Real)&#34;. </p><p class="ptTaskContinue">Класс Proxy является заместителем класса RealSubject, комбинирующим черты виртуального и защищающего заместителя. Предполагается, что операции&nbsp;A и&nbsp;B являются простыми и могут быть реализованы в самом заместителе, в то время как операции&nbsp;C и&nbsp;D являются сложными и доступны только в классе RealSubject. Кроме того, операции&nbsp;A и&nbsp;C являются безопасными, а операции&nbsp;B и&nbsp;D&nbsp;&#8212; потенциально опасными, и в некоторых ситуациях их целесообразно заблокировать. Поэтому класс Proxy содержит два логических поля: deferredMode (отложенный режим) и protectedMode (защищенный режим), которые задаются в его конструкторе и определяют его поведение по отношению к реальному субъекту. Кроме того, класс Proxy содержит поле rsubj&nbsp;&#8212; ссылку на объект типа RealSubject. </p><p class="ptTaskContinue">Если поле deferredMode равно false, то объект RealSubject создается в конструкторе класса Proxy (и связывается со ссылкой rsubj), если deferredMode равно true, то начальное значение ссылки rsubj является пустым. Если поле protectedMode равно false и при этом ссылка rsubj не является пустой, то все операции переадресуются объекту, на который ссылается rsubj. Если protectedMode равно false, а ссылка rsubj является пустой, то простые операции&nbsp;A и&nbsp;B выполняются самим объектом Proxy и при этом возвращаются строки &#34;A (Proxy)&#34; и &#34;B (Proxy)&#34;, а в случае вызова операции&nbsp;C или&nbsp;D объект RealSubject создается и связывается со ссылкой rsubj, после чего эта операция переадресуется ему. Если protectedMode равно true, то выполнение операций&nbsp;A и&nbsp;C не отличается от ранее описанного, а при попытке вызова операций&nbsp;B и&nbsp;D они отменяются (независимо от значения ссылки rsubj), причем соответствующие методы возвращают строки &#34;B denied&#34; и &#34;D denied&#34;. </p><p class="ptTaskContinue">Дан набор из трех целых чисел, принимающих значения от&nbsp;&#8722;1 до&nbsp;3, и строка, содержащая только символы из набора &#34;A&#34;, &#34;B&#34;, &#34;C&#34;, &#34;D&#34;&nbsp;&#8212; имена операций. Создать массив из трех ссылочных элементов типа Subject, инициализировав элементы конкретными объектами в зависимости от значения исходных чисел: &#8722;1&nbsp;&#8212; RealSubject, 0&nbsp;&#8212; Proxy(false, false), 1&nbsp;&#8212; Proxy(true, false), 2&nbsp;&#8212; Proxy(false, true), 3&nbsp;&#8212; Proxy(true, true). Для каждого из созданных объектов выполнить набор операций, определяемый исходной строкой, и вывести результат, возвращаемый каждой операцией. </p><pre class="pt">public abstract class Subject
+{
+    public abstract string OperationA();
+    public abstract string OperationB();
+    public abstract string OperationC();
+    public abstract string OperationD();
+}
+
+// Implement the RealSubject and Proxy descendant classes</pre>
+<p class="ptTask"><span class="ptSpecial">OOP2Struc10°</span>. </p><p class="ptPicture"><img src="file:///C:\Program Files (x86)\PT4\LIB\Graph\OOPBridge.png" alt="C:\Program Files (x86)\PT4\LIB\Graph\OOPBridge.png" border=1></p><p class="ptTaskContinue"><b>Bridge</b> (<b>Мост</b>)&nbsp;&#8212; структурный паттерн. </p><p class="ptTaskContinue">Известен также под именем <b>Handle/Body</b> (<b>Описатель/Тело</b>). </p><p class="ptTaskContinue"><span class="ptSpecial">Частота использования</span>: средняя. </p><p class="ptTaskContinue"><span class="ptSpecial">Назначение</span>: отделяет абстракцию от ее реализации так, чтобы то и другое можно было изменять независимо. </p><p class="ptTaskContinue"><span class="ptSpecial">Участники</span>: </p><p class="ptTaskContinue">&#8226;&nbsp;<i>Abstraction</i> (<i>Абстракция</i>)&nbsp;&#8212; определяет интерфейс абстракции; хранит ссылку на объект типа Implementor; </p><p class="ptTaskContinue">&#8226;&nbsp;<i>RefinedAbstraction</i> (<i>Уточненная</i> <i>абстракция</i>)&nbsp;&#8212; расширяет интерфейс, определенный абстракцией Abstraction; </p><p class="ptTaskContinue">&#8226;&nbsp;<i>Implementor</i> (<i>Реализатор</i>)&nbsp;&#8212; определяет интерфейс для классов реализации; не обязан точно соответствовать интерфейсу класса Abstraction (обычно предоставляет только примитивные операции, в то время как класс Abstraction определяет операции более высокого уровня, базирующиеся на этих примитивах); </p><p class="ptTaskContinue">&#8226;&nbsp;<i>ConcreteImplementorA</i> и <i>ConcreteImplementorB</i> (<i>Конкретные реализаторы</i>)&nbsp;&#8212; содержат конкретную реализацию интерфейса класса Implementor. </p><p class="ptTaskContinue"><span class="ptSpecial">Задание 1</span>. Реализовать иерархию классов-<i>реализаторов</i>, содержащую абстрактного реализатора Implementor и два конкретных реализатора ConcreteImplementorA и ConcreteImplementorB. Классы отвечают за представление горизонтальных линий и текста и включают методы DrawLine(size) и DrawText(text), возвращающие строковые значения. Параметр size определяет размер линии (в символах), параметр text&nbsp;&#8212; выводимый текст. В классе Implementor методы DrawLine и DrawText являются абстрактными. Конкретный реализатор&nbsp;A представляет линию в виде набора символов &#34;&#8722;&#34;, а текст отображает в нижнем регистре. Конкретный реализатор&nbsp;B представляет линию в виде набора символов &#34;=&#34;, а текст отображает в верхнем регистре. Оба конкретных реализатора имеют конструкторы без параметров, не выполняющие дополнительных действий. </p><p class="ptTaskContinue">Реализовать класс Abstraction, предназначенный для отображения и корректировки строки заголовка. Конструктор класса принимает параметры imp типа Implementor (ссылку на используемый реализатор) и size целого типа (размер заголовка). Класс также содержит метод Show без параметров, возвращающий строку-заголовок, и метод SetSize(n), задающий размер заголовка равным значению&nbsp;n (целое неотрицательное число). Класс Abstraction реализует простейший вариант заголовка, представляющий собой линию указанного размера. </p><p class="ptTaskContinue">Реализовать класс RefinedAbstraction, который является усовершенствованным вариантом класса Abstraction и позволяет включать в заголовок текст. Конструктор класса RefinedAbstraction содержит, кроме параметров imp и size, имеющих тот же смысл, что и для конструктора класса Abstraction, строковый параметр caption. Заголовок формируется следующим образом: вначале указывается линия размера&nbsp;1, затем строка caption, затем линия такого размера, чтобы суммарный размер заголовка был равен size. Для малых значений size строка caption может урезаться справа. Переопределить нужным образом метод Show в классе RefinedAbstraction. </p><p class="ptTaskContinue">Дано целое положительное число size (начальный размер заголовка) и строка caption (необязательный элемент заголовка). Также даны пять целых положительных чисел (новые размеры заголовков). Создать экземпляры классов Abstraction и RefinedAbstraction с указанными параметрами и каждым из конкретных реализаторов&nbsp;A и&nbsp;B и вывести соответствующие заголовки методом Show. Затем, используя каждый из новых размеров, изменить размер каждого заголовка и вывести измененные заголовки. Порядок вывода заголовков для каждого размера: Abstraction с реализатором&nbsp;A, Abstraction с реализатором&nbsp;B, RefinedAbstraction с реализатором&nbsp;A, RefinedAbstraction с реализатором&nbsp;B. Для хранения созданных объектов использовать массив из четырех ссылочных элементов типа Abstraction. </p><pre class="pt">public abstract class Implementor
+{
+    public abstract string DrawLine(int size);
+    public abstract string DrawText(string text);
+}
+
+// Implement the ConcreteImplementorA
+//   and ConcreteImplementorB descendant classes
+
+public class Abstraction
+{
+    protected int size;
+    protected Implementor imp;
+    public Abstraction(Implementor imp, int size)
+    {
+        this.imp = imp;
+        this.size = size;
+    }
+    // Complete the implementation of the class
+}
+
+// Implement the RefinedAbstraction descendant class</pre>
+<p class="ptTask"><span class="ptSpecial">OOP2Struc11°</span>. </p><p class="ptPicture"><img src="file:///C:\Program Files (x86)\PT4\LIB\Graph\OOPFlyweight.png" alt="C:\Program Files (x86)\PT4\LIB\Graph\OOPFlyweight.png" border=1></p><p class="ptTaskContinue"><b>Flyweight</b> (<b>Приспособленец</b>)&nbsp;&#8212; структурный паттерн. </p><p class="ptTaskContinue"><span class="ptSpecial">Частота использования</span>: низкая. </p><p class="ptTaskContinue"><span class="ptSpecial">Назначение</span>: применяет <i>разделение</i> (т.&nbsp;е. совместное использование одного и того же экземпляра) для эффективной поддержки множества объектов, сохраняя основную часть их состояния во внешних данных клиента. </p><p class="ptTaskContinue"><span class="ptSpecial">Участники</span>: </p><p class="ptTaskContinue">&#8226;&nbsp;<i>Flyweight</i> (<i>Приспособленец</i>)&nbsp;&#8212; объявляет интерфейс, с помощью которого приспособленцы могут получать внешнее состояние или воздействовать на него; </p><p class="ptTaskContinue">&#8226;&nbsp;<i>ConcreteFlyweight</i> (<i>Конкретный приспособленец</i>)&nbsp;&#8212; реализует интерфейс класса Flyweight и добавляет при необходимости внутреннее состояние (объект класса ConcreteFlyweight должен быть разделяемым, любое сохраняемое им состояние должно быть <i>внутренним</i>, то есть не зависящим от контекста); </p><p class="ptTaskContinue">&#8226;&nbsp;<i>UnsharedConcreteFlyweight</i> (<i>Неразделяемый конкретный приспособленец</i>)&nbsp;&#8212; реализует интерфейс класса Flyweight, но не является разделяемым; данный класс может сохранять состояние, зависящее от контекста; </p><p class="ptTaskContinue">&#8226;&nbsp;<i>FlyweightFactory</i> (<i>Фабрика приспособленцев</i>)&nbsp;&#8212; создает объекты-приспособленцы и управляет ими; при запросе клиентом приспособленца объект FlyweightFactory предоставляет существующий экземпляр или создает новый, если готового еще нет; </p><p class="ptTaskContinue">&#8226;&nbsp;<i>Client</i> (<i>Клиент</i>)&nbsp;&#8212; хранит ссылки на одного или нескольких приспособленцев; вычисляет или хранит внешнее состояние приспособленцев. </p><p class="ptTaskContinue"><span class="ptSpecial">Задание 1</span>. Реализовать иерархию классов, которая включает абстрактный класс Flyweight с абстрактным методом Show(state), имеющим логический параметр state и возвращающим символьное значение, и конкретные классы ConcreteFlyweight и UnsharedConcreteFlyweight&nbsp;&#8212; потомки класса Flyweight. Предполагается, что клиент будет использовать большое количество объектов класса ConcreteFlyweight, поэтому этот класс должен поддерживать разделение. Метод Show(state) класса ConcreteFlyweight возвращает символ &#34;A&#34;, регистр которого зависит от значения state (если state&nbsp;=&nbsp;true, то используется верхний регистр, если state&nbsp;=&nbsp;false, то нижний). Конструктор класса ConcreteFlyweight не имеет параметров и не выполняет дополнительных действий. </p><p class="ptTaskContinue">Класс UnsharedConcreteFlyweight не является разделяемым; он хранит дополнительное символьное поле inf, которое инициализируется в конструкторе, имеющем соответствующий символьный параметр. Метод Show(state) класса UnsharedConcreteFlyweight возвращает символ inf, его регистр определяется параметром state (как в методе Show класса ConcreteFlyweight). </p><p class="ptTaskContinue">Реализовать класс-фабрику FlyweightFactory, содержащий поле-ссылку cf типа ConcreteFlyweight и поле count целого типа, а также конструктор без параметров (при создании данного объекта поле cf содержит пустую ссылку, а поле count&nbsp;&#8212; значение&nbsp;0). Класс содержит метод CreateFlyweight(inf) с символьным параметром и возвращаемым значением-ссылкой типа Flyweight. Если параметр отличен от символа &#34;A&#34; или &#34;a&#34;, то фабрика создает и возвращает новый объект типа UnsharedConcreteFlyweight, используя конструктор с параметром inf. Если параметр представляет собой символ &#34;A&#34; или &#34;a&#34;, то в случае, если поле cf содержит ссылку на существующий объект типа ConcreteFlyweight, возвращается этот объект, если же поле cf является пустым, то объект типа ConcreteFlyweight создается, сохраняется в поле cf и возвращается методом CreateFlyweight. Если в методе CreateFlyweight создается новый объект, то поле count увеличивается на&nbsp;1; таким образом, данное поле хранит общее количество созданных объектов. Значение поля count можно получить с помощью метода GetCount без параметров. </p><p class="ptTaskContinue">Реализовать также класс Client, предназначенный для создания, хранения и обработки наборов объектов типа Flyweight. Класс содержит поля f&nbsp;&#8212; объект типа FlyweightFactory и fw&nbsp;&#8212; структуру ссылочных данных (например, массив) с элементами типа Flyweight (можно считать, что число элементов fw не превосходит&nbsp;30). Конструктор класса Client не имеет параметров, в нем создается объект&nbsp;f и инициализируется структура данных fw. Класс содержит методы MakeFlyweights(inf), ShowFlyweights(state) и GetFlyweightCount. Параметр inf метода MakeFlyweights является строкой, определяющей набор создаваемых объектов типа Flyweight (для создания требуемого набора в методе MakeFlyweights в цикле вызывается метод CreateFlyweight объекта f с параметром&nbsp;&#8212; очередным символом строки inf). Ссылки на созданные объекты сохраняются в структуре fw; при каждом вызове метода MakeFlyweights прежнее содержимое структуры fw очищается. Метод ShowFlyweights(state) возвращает строку, состоящую из символов, возвращаемых методом Show(state) для каждого элемента набора fw. Метод GetFlyweightCount без параметров возвращает количество объектов, созданных к данному моменту фабрикой f; для этого используется ее метод GetCount. </p><p class="ptTaskContinue">Дано пять текстовых строк; длина каждой строки не превосходит&nbsp;30, большинство символов в этих строках являются символами &#34;A&#34; в верхнем или нижнем регистре. Создать объект типа Client и для каждой исходной строки s вызвать метод MakeFlyweights(s) и вывести значения, возвращаемые методами ShowFlyweights(true), ShowFlyweights(false) и GetFlyweightCount. </p><pre class="pt">public abstract class Flyweight
+{
+    public abstract char Show(bool state);
+}
+
+// Implement the ConcreteFlyweight
+//   and UnsharedConcreteFlyweight descendant classes
+
+// Implement the FlyweightFactory and Client classes</pre>
+<hr noshade>
+<p class="ptFooter">Page generation date: 2022/4/26.</p>
+</body></html>

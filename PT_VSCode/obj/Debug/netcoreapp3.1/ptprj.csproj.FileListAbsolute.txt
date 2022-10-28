@@ -1,0 +1,14 @@
+C:\PT4Work\PT_VSCode\bin\Debug\netcoreapp3.1\ptprj.exe
+C:\PT4Work\PT_VSCode\bin\Debug\netcoreapp3.1\ptprj.deps.json
+C:\PT4Work\PT_VSCode\bin\Debug\netcoreapp3.1\ptprj.runtimeconfig.json
+C:\PT4Work\PT_VSCode\bin\Debug\netcoreapp3.1\ptprj.runtimeconfig.dev.json
+C:\PT4Work\PT_VSCode\bin\Debug\netcoreapp3.1\ptprj.dll
+C:\PT4Work\PT_VSCode\bin\Debug\netcoreapp3.1\ptprj.pdb
+C:\PT4Work\PT_VSCode\obj\Debug\netcoreapp3.1\ptprj.AssemblyInfoInputs.cache
+C:\PT4Work\PT_VSCode\obj\Debug\netcoreapp3.1\ptprj.AssemblyInfo.cs
+C:\PT4Work\PT_VSCode\obj\Debug\netcoreapp3.1\ptprj.csproj.CoreCompileInputs.cache
+C:\PT4Work\PT_VSCode\obj\Debug\netcoreapp3.1\ptprj.dll
+C:\PT4Work\PT_VSCode\obj\Debug\netcoreapp3.1\ptprj.pdb
+C:\PT4Work\PT_VSCode\obj\Debug\netcoreapp3.1\ptprj.genruntimeconfig.cache
+C:\PT4Work\PT_VSCode\obj\Debug\netcoreapp3.1\ptprj.csproj.AssemblyReference.cache
+C:\PT4Work\PT_VSCode\obj\Debug\netcoreapp3.1\ptprj.GeneratedMSBuildEditorConfig.editorconfig

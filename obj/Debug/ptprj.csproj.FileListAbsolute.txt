@@ -1,0 +1,8 @@
+C:\PT4Work\obj\Debug\ptprj.csproj.AssemblyReference.cache
+C:\PT4Work\obj\Debug\ptprj.csproj.CoreCompileInputs.cache
+C:\PT4Work\obj\Debug\ptprj.csproj.CopyComplete
+C:\PT4Work\obj\Debug\ptprj.exe
+C:\PT4Work\obj\Debug\ptprj.pdb
+C:\PT4Work\ptprj.exe
+C:\PT4Work\ptprj.pdb
+C:\PT4Work\obj\Debug\ptprj.csproj.SuggestedBindingRedirects.cache

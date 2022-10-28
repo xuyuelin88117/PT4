@@ -1,0 +1,88 @@
+TASK CHECKING (4-Xu Yuelin)
+Date and time of check: 01.07.2022 21:50
+-------------------------
+ 1. SUMMARY INFORMATION
+-------------------------
+Solved tasks (62):
+ XString8     XString16    XString25    XString30    XString40    XString48   
+ XString59    XString64    XFile13      XFile34      XFile55      XFile70     
+ XText18      XText36      XText42      XText46      XText49      XText55     
+ OOP1Creat6   OOP1Creat4   OOP1Creat7   OOP1Creat9   OOP2Struc3   OOP2Struc7  
+ OOP2Struc9   OOP2Struc10  OOP3Behav7   OOP3Behav4   OOP3Behav5   OOP3Behav8  
+ OOP3Behav10  OOP3Behav15  OOP3Behav14  OOP3Behav17  LinqBegin6   LinqBegin14 
+ LinqBegin26  LinqBegin29  LinqBegin37  LinqBegin38  LinqBegin45  LinqBegin50 
+ LinqBegin58  LinqObj3     LinqObj22    LinqObj25    LinqObj47    LinqObj58   
+ LinqObj68    LinqObj77    LinqObj84    LinqObj100   LinqXml7     LinqXml18   
+ LinqXml24    LinqXml38    LinqXml47    LinqXml58    LinqXml76    LinqXml86   
+ LinqXml81    LinqXml74   
+Summary by each task group:
+ XString 8/8[8/8](***)                  XFile 4/4[4/4](***)                   
+ XText 6/6[6/6](***)                    OOP1Creat 4/4[4/4](***)               
+ OOP2Struc 4/4[4/4](***)                OOP3Behav 8/8[14/14](***)             
+ LinqBegin 9/9[9/9](***)                LinqObj 9/9[15/15](***)               
+ LinqXml 10/10[16/16](***)              TOTAL: 62/62[80/80](***)              
+-------------------------
+ 2. COMPLETE INFORMATION
+-------------------------
+= XString8    S28/03 10:55 [version 1] 1/Solution is correct (points: 1)
+= XString16   S28/03 11:13 [version 2] 1/Solution is correct (points: 1)
+= XString25   S28/03 11:25 [version 1] 1/Solution is correct (points: 1)
+= XString30   S28/03 11:41 [version 1] 1/Solution is correct (points: 1)
+= XString40   S28/03 12:08 [version 1] 1/Solution is correct (points: 1)
+= XString48   S28/03 16:18 [version 10] 1/Solution is correct (points: 1)
+= XString59   S28/03 10:42 [version 11] 1/Solution is correct (points: 1)
+= XString64   S28/03 16:24 [version 1] 1/Solution is correct (points: 1)
+= XFile13     S02/04 18:26 [version 2] 1/Solution is correct (points: 1)
+= XFile34     S02/04 18:27 [version 2] 1/Solution is correct (points: 1)
+= XFile55     S02/04 18:30 [version 3] 1/Solution is correct (points: 1)
+= XFile70     S02/04 18:32 [version 2] 1/Solution is correct (points: 1)
+= XText18     S02/04 01:54 [version 1] 1/Solution is correct (points: 1)
+= XText36     S02/04 01:56 [version 1] 1/Solution is correct (points: 1)
+= XText42     S02/04 18:11 [version 1] 1/Solution is correct (points: 1)
+= XText46     S02/04 18:12 [version 3] 1/Solution is correct (points: 1)
+= XText49     S02/04 01:58 [version 1] 1/Solution is correct (points: 1)
+= XText55     S02/04 01:58 [version 1] 1/Solution is correct (points: 1)
+= OOP1Creat6  S09/05 14:06 [version 3] 1/Solution is correct (points: 1)
+= OOP1Creat4  S28/04 14:35 [version 1] 1/Solution is correct (points: 1)
+= OOP1Creat7  S09/05 14:52 [version 2] 1/Solution is correct (points: 1)
+= OOP1Creat9  S09/05 15:00 [version 1] 1/Solution is correct (points: 1)
+= OOP2Struc3  S09/05 15:20 [version 2] 1/Solution is correct (points: 1)
+= OOP2Struc7  S09/05 15:33 [version 1] 1/Solution is correct (points: 1)
+= OOP2Struc9  S10/05 00:42 [version 2] 1/Solution is correct (points: 1)
+= OOP2Struc10 S16/05 14:20 [version 1] 1/Solution is correct (points: 1)
+= OOP3Behav7  S17/05 16:13 [version 4] 1/Solution is correct (points: 2)
+= OOP3Behav4  S21/05 15:09 [version 3] 1/Solution is correct (points: 1)
+= OOP3Behav5  S17/05 18:40 [version 2] 1/Solution is correct (points: 1)
+= OOP3Behav8  S22/05 22:15 [version 1] 1/Solution is correct (points: 2)
+= OOP3Behav10 S21/05 16:51 [version 4] 1/Solution is correct (points: 2)
+= OOP3Behav15 S21/05 17:24 [version 2] 1/Solution is correct (points: 2)
+= OOP3Behav14 S21/05 17:03 [version 1] 1/Solution is correct (points: 2)
+= OOP3Behav17 S21/05 17:35 [version 1] 1/Solution is correct (points: 2)
+= LinqBegin6  S20/05 10:45 [version 1] 1/Solution is correct (points: 1)
+= LinqBegin14 S21/05 14:32 [version 20] 1/Solution is correct (points: 1)
+= LinqBegin26 S20/05 10:52 [version 2] 1/Solution is correct (points: 1)
+= LinqBegin29 S31/05 23:06 [version 10] 1/Solution is correct (points: 1)
+= LinqBegin37 S20/05 11:10 [version 1] 1/Solution is correct (points: 1)
+= LinqBegin38 S21/05 14:08 [version 1] 1/Solution is correct (points: 1)
+= LinqBegin45 S21/05 14:11 [version 3] 1/Solution is correct (points: 1)
+= LinqBegin50 S21/05 14:12 [version 1] 1/Solution is correct (points: 1)
+= LinqBegin58 S21/05 14:13 [version 2] 1/Solution is correct (points: 1)
+= LinqObj3    S23/05 14:46 [version 2] 1/Solution is correct (points: 1)
+= LinqObj22   S25/06 16:29 [version 21] 1/Solution is correct (points: 1)
+= LinqObj25   S23/06 19:31 [version 5] 1/Solution is correct (points: 1)
+= LinqObj47   S25/06 14:15 [version 1] 1/Solution is correct (points: 1)
+= LinqObj58   S21/06 10:21 [version 4] 1/Solution is correct (points: 1)
+= LinqObj68   S25/06 16:39 [version 30] 1/Solution is correct (points: 2)
+= LinqObj77   S25/06 16:31 [version 2] 1/Solution is correct (points: 2)
+= LinqObj84   S25/06 20:26 [version 28] 1/Solution is correct (points: 3)
+= LinqObj100  S06/06 14:06 [version 6] 1/Solution is correct (points: 3)
+= LinqXml7    S21/06 19:24 [version 15] 1/Solution is correct (points: 1)
+= LinqXml18   S24/05 22:50 [version 2] 1/Solution is correct (points: 1)
+= LinqXml24   S24/05 22:53 [version 1] 1/Solution is correct (points: 1)
+= LinqXml38   S24/05 23:14 [version 3] 1/Solution is correct (points: 1)
+= LinqXml47   S24/05 22:55 [version 1] 1/Solution is correct (points: 2)
+= LinqXml58   S24/05 22:56 [version 1] 1/Solution is correct (points: 2)
+= LinqXml76   S24/05 22:57 [version 1] 1/Solution is correct (points: 2)
+= LinqXml86   S24/05 22:57 [version 1] 1/Solution is correct (points: 2)
+= LinqXml81   S24/05 22:58 [version 1] 1/Solution is correct (points: 2)
+= LinqXml74   S29/06 17:56 [version 7] 1/Solution is correct (points: 2)
